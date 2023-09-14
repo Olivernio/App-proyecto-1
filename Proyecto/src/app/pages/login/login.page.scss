@@ -5,51 +5,57 @@ ion-content {
   --padding-start: 20px;
 }
 
-#body{
+#body {
   display: contents;
   background-color: rgb(28 33 32);
 }
 
-.contenedor-background{
+.contenedor-background {
   position: relative;
 }
 
+#bk-f-0 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+}
 //Background figura #N°
-#bk-f-1{
+#bk-f-1 {
   position: absolute;
   width: 230px;
   left: -30px;
-  z-index: 1;
+  z-index: 10;
 }
-#bk-f-2{
+#bk-f-2 {
   position: absolute;
   width: 230px;
   right: -70px;
-  z-index: 2;
+  z-index: 11;
 }
-#bk-f-3{
+#bk-f-3 {
   position: absolute;
   width: 230px;
   left: 150px;
   top: 90px;
   transform: rotate(-300deg);
-  z-index: 3;
+  z-index: 12;
 }
-#bk-f-4{
+#bk-f-4 {
   position: absolute;
   width: 230px;
   left: -80px;
   top: 90px;
   transform: rotate(-250deg);
-  z-index: 4;
+  z-index: 13;
 }
-#bk-f-5{
+#bk-f-5 {
   position: absolute;
   width: 230px;
   right: -100px;
   top: 230px;
   transform: rotate(15deg);
-  z-index: 5;
+  z-index: 14;
 }
 
 #container-logo-duocuc {
@@ -77,16 +83,28 @@ ion-content {
   }
 }
 
-img, ion-img {
+img,
+ion-img {
   pointer-events: none;
 }
 
-#card{
+.card {
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  background-color: #152139;
   box-shadow: #152139 0px 22px 70px 4px;
   z-index: 100;
+  transition: .5s
 }
 
-#div-input-correo{
+.card-error {
+  background-color: #560a0a;
+  box-shadow: #521414 0px 22px 70px 4px;
+  z-index: 101;
+  transition: .5s; 
+}
+
+#div-input-correo {
   border-radius: 50px;
   background-color: rgb(128, 128, 128);
   text-align: left;
@@ -96,12 +114,12 @@ img, ion-img {
   margin-bottom: 10px;
 }
 
-#input-correo{
+#input-correo {
   width: 90%;
-  color: wheat;
+  color: rgb(255, 255, 255);
 }
 
-#div-input-password{
+#div-input-password {
   border-radius: 50px;
   background-color: rgb(128, 128, 128);
   text-align: left;
@@ -111,13 +129,12 @@ img, ion-img {
   margin-bottom: 10px;
 }
 
-#input-password{
+#input-password {
   width: 90%;
-  color: wheat;
+  color: rgb(255, 255, 255);
 }
 
-
-#body{
+#body {
   /* Estilos para la página */
   transition: opacity 0.5s ease-in-out;
 }
@@ -126,6 +143,3 @@ body.fade-out {
   /* Estilo inicial: página opaca */
   opacity: 0;
 }
-
-
-

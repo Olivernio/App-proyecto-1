@@ -4,7 +4,7 @@ import { MiClaseAsignaturaPage } from './mi-clase-asignatura.page';
 describe('MiClaseAsignaturaPage', () => {
   let component: MiClaseAsignaturaPage;
   let fixture: ComponentFixture<MiClaseAsignaturaPage>;
-
+  // @ts-ignore
   beforeEach(async(() => {
     fixture = TestBed.createComponent(MiClaseAsignaturaPage);
     component = fixture.componentInstance;

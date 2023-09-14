@@ -1,3 +1,4 @@
+<img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro">
 <div id="body">
   <!-- DIV que contiene las figuras del fondo -->
   <div class="contenedor-background">
@@ -8,41 +9,47 @@
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
 
-
-  <ion-card id="card" style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%;">
-      <div id="div-logo-duocuc">
-        <ion-img
-            id="logo-duocuc"
-            src="assets/image/DuocUC-light.svg"
-            alt="Instituto Profesional DuocUC"
-          ></ion-img>
-      </div>
-    <ion-title class="ion-padding-top ion-text-center">
-      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
-    </ion-title>
-    <ion-label style="text-align: center;">
-      <p>Paso 2: responde la pregunta secreta <span *ngIf="usuario">{{ usuario.nombre }}</span></p>
-    </ion-label>
-    <div class="ion-padding-vertical">
-      <ion-card class="ion-text-center ion-padding-vertical">
-        <div *ngIf="usuario">
-          <ion-card-title class="ion-text-center">{{ usuario.preguntaSecreta }}</ion-card-title>
-        </div>
-
-        <!-- ========== FORMULARIO ========== -->
-        <ion-card-content id="card-form">
-          <form>
-            <div id="div-input-respuesta">
-              <ion-input id="input-respuesta" type="text"label="Respuesta"[(ngModel)]="respuesta"name="respuesta"labelPlacement="floating"></ion-input>
-            </div>
-            <div>
-              <ion-button class="ion-padding-top"(click)="PaginaValidarRespuestaSecreta()" color="success">Validar Respuesta</ion-button>
-            </div>
-          </form>
-        </ion-card-content>
-      </ion-card>
+  <div id="container-card">
+    <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110;">
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-  </ion-card>
+    <ion-card id="card" style="background-color: #152139;  border-top-left-radius: 10%; border-top-right-radius: 10%;">
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
+            style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
+      </ion-title>
+      <ion-label style="text-align: center;">
+        <p>Paso 2: responde la pregunta secreta <span *ngIf="usuario">{{ usuario.nombre }}</span></p>
+      </ion-label>
+      <div class="ion-padding-vertical">
+        <ion-card class="ion-text-center ion-padding-vertical">
+          <div *ngIf="usuario">
+            <ion-card-title class="ion-text-center">{{ usuario.preguntaSecreta }}</ion-card-title>
+          </div>
+
+          <!-- ========== FORMULARIO ========== -->
+          <ion-card-content id="card-form">
+            <form>
+              <div id="div-input-respuesta">
+                <ion-input id="input-respuesta" type="text" label="Respuesta" [(ngModel)]="respuesta" name="respuesta"
+                  labelPlacement="floating"></ion-input>
+              </div>
+              <div>
+                <ion-button class="ion-padding-top" (click)="PaginaValidarRespuestaSecreta()" color="success">Validar
+                  Respuesta</ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="ion-text-center">
+        <ion-button fill="outline" (click)="volver()">
+          <ion-icon name="arrow-undo-circle-outline"></ion-icon> Volver
+        </ion-button>
+      </div>
+    </ion-card>
+  </div>
+
 
   <!-- FOOTER -->
   <ion-footer>

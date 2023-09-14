@@ -26,6 +26,12 @@ ion-content {
   position: relative;
 }
 
+#bk-f-0{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 //Background figura #N°
 #bk-f-1{
   position: absolute;
@@ -83,21 +89,77 @@ ion-content {
 }
 
 
-#div-logo-duocuc {
-  width: 150px;
-  height: 50px;
-  background-color: #002138;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  display: flex;
-  box-shadow: #002138 0px 25px 20px -20px;
-
-  #logo-duocuc {
-    margin-top: 20px;
+@media (min-width: 700px) {
+  #div-logo-duocuc-700-min {
+    top: 5%;
+    position: absolute;
+    left: 37%;
+    width: 30%;
+    height: 10%;
+    background-color: #002138;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #002138 0px 25px 20px -20px;
+    z-index: 300;
+  }
+  #logo-duocuc-700-min {
     margin-left: 10%;
     width: 80%;
-    height: auto;
+    z-index: 301;
+  }
+  #div-logo-duocuc {
+    position: absolute;
+    #logo-duocuc{
+      visibility: hidden;
+    }
+  }
+
+  .card {
+    top: 10%;
+    background-color: #152139;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    box-shadow: #152139 0px 22px 70px 4px;
+    transition: 0.5s;
+    z-index: 100;
+  }
+
+}
+
+@media (max-width: 700px) {
+  #container-logo-duocuc {
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+
+  #div-logo-duocuc {
+    position: relative;
+    width: 50%;
+    height: 60px;
+    background-color: #152139;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    #logo-duocuc {
+      margin-top: 5%;
+      width: 80%;
+      height: auto;
+    }
+  }
+  #div-logo-duocuc-700-min{
+    visibility: hidden;
+    position: absolute;
+  }
+  #logo-duocuc-700-min{
+    visibility: hidden;
+    position: absolute;
   }
 }
 
@@ -105,8 +167,13 @@ img, ion-img {
   pointer-events: none;
 }
 
-#card{
+.card {
+  background-color: #152139;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
   box-shadow: #152139 0px 22px 70px 4px;
+  z-index: 100;
+  transition: 0.5s;
   z-index: 100;
 }
 

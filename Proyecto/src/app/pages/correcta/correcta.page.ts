@@ -11,21 +11,20 @@ import { AlertController, ToastController} from '@ionic/angular';
 export class CorrectaPage implements OnInit {
   public usuario: Usuario | undefined;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router,)
+  constructor(private activatedRoute: ActivatedRoute, private router: Router)
   {
     this.activatedRoute.queryParams.subscribe((params) => {
-      console.log("Contructor");
       const navigation: Navigation | null = this.router.getCurrentNavigation();
       if (navigation) {
-        console.log("Se declara STATE");
         const state: any | undefined = navigation.extras.state;
         if (state) {
-        console.log("IF del STATE");
           if (state['usuario']) {
             this.usuario = state['usuario'];
-            console.log("Coso usuario : " + this.usuario);
           }
         }
+      }
+      if (!this.usuario) {
+        this.router.navigate(['/']);
       }
     });
   }

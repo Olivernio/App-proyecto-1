@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Navigation, NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
-import { AlertController, ToastController} from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -12,6 +12,7 @@ import { AlertController, ToastController} from '@ionic/angular';
 export class PreguntaPage implements OnInit {
   public usuario: Usuario | undefined;
   public respuesta: string = '';
+  public intento: number = 3;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,17 +27,18 @@ export class PreguntaPage implements OnInit {
         if (state) {
           if (state['usuario']) {
             this.usuario = state['usuario'];
-          } else {
-            this.router.navigate(['/login']);
           }
-        } else {
-          this.router.navigate(['/login']);
         }
+      }
+      if (!this.usuario) {
+        this.router.navigate(['/']);
       }
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.intento = 3;
+  }
 
   public volver(): void {
     this.router.navigate(['/']);
@@ -44,22 +46,34 @@ export class PreguntaPage implements OnInit {
 
   public PaginaValidarRespuestaSecreta(): void {
     if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-      this.router.navigate(['/correcta']); 
-      const nagigationExtras: NavigationExtras = {
-        state: {
-          usuario: this.usuario
-        }
+
+      const navigationExtras: NavigationExtras = {
+        queryParams: {}, // Puedes agregar parámetros de consulta si es necesario
+        state: { usuario: this.usuario } // Puedes pasar datos adicionales al estado si es necesario
       };
-      
+      // Realiza la redirección
+      this.router.navigate(["correcta"], navigationExtras);
+
     } else if (this.usuario && this.respuesta === '' || this.usuario && this.respuesta === ' ') {
       this.mostrarMensajeTostada('Escriba la respuesta');
     } else {
-      this.router.navigate(['/incorrecta']); 
-      ;
+      if (this.intento < 1) {
+        this.intento = 3;
+        this.router.navigate(['/incorrecta']);
+        const navigationExtras: NavigationExtras = {
+          queryParams: {}, // Puedes agregar parámetros de consulta si es necesario
+          state: { usuario: this.usuario } // Puedes pasar datos adicionales al estado si es necesario
+        };
+        // Realiza la redirección
+        this.router.navigate(["incorrecta"], navigationExtras);
+      } else {
+        this.mostrarMensajeTostada('¡Te quedan ' + this.intento + ' intentos restantes!')
+        this.intento -= 1;
+      }
     }
   }
 
-  
+
 
   async mostrarMensajeTostada(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({

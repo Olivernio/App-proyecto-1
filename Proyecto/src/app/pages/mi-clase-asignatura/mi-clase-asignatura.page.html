@@ -1,13 +1,75 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>miClaseAsignatura</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">miClaseAsignatura</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulodatosdeasignatura" >DATOS DE LA ASIGNATURA</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="borde">
+      <br />
+
+      <table>
+        <tr>
+          <td class="ancho_columna_titulos">Bloque de Inicio</td>
+          <td>{{bloqueInicio}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Bloque de Término</td>
+          <td>{{bloqueTermino}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Día</td>
+          <td>{{dia}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Hora de Fin</td>
+          <td>{{horaFin}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Hora de Inicio</td>
+          <td>{{horaInicio}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Sigla</td>
+          <td>{{idAsignatura}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Nombre de Asignatura</td>
+          <td>{{nombreAsignatura}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Nombredel Profesor</td>
+          <td>{{nombreProfesor}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Sección</td>
+          <td>{{seccion}}</td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+          <td>Sede</td>
+          <td>{{sede}}</td>
+        </tr>
+        <tr></tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-button color="danger" (click)="cerrarSesion()" >Cerrar Sesion</ion-button> -->
+  
 </ion-content>

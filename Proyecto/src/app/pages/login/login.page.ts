@@ -10,9 +10,10 @@ import { Usuario } from 'src/app/model/usuario';
 })
 export class LoginPage implements OnInit {
 
+  error: boolean = false;
   public usuario: Usuario;
   constructor(private router: Router, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '');
+    this.usuario = new Usuario('', '', '', '', '', '');
     this.usuario.correo = '';
     this.usuario.password = '';
   }
@@ -33,17 +34,12 @@ export class LoginPage implements OnInit {
         usuario: this.usuario
       }
     };
-    this.router.navigate(['/qr-reader'], navigationExtras);
+    this.router.navigate(['/home'], navigationExtras);
   }
 
   public ingresarcorreorecuperacion(): void {
     this.router.navigate(['/correo']);
   }
-
-  public ingresarqr(): void {
-    this.router.navigate(['/qr-reader']);
-  }
-
 
   public validarUsuario(usuario: Usuario): boolean {
 
@@ -53,9 +49,16 @@ export class LoginPage implements OnInit {
     if (usu) {
       this.usuario = usu;
       return true;
-    }
-    else {
-      this.mostrarMensaje('Las credenciales no son correctas!');
+    }else if (!this.usuario.correo.endsWith('@duocuc.cl')) {
+      this.mostrarMensaje('Por favor, ingrese su correo institucional (DuocUC)');
+      return false;
+    } else if (!this.validarUsuario(this.usuario)) {
+      this.efectoError();
+      this.mostrarMensaje('¡El correo no se encuentra en el sistema!');
+      return false;
+    } else {
+      this.efectoError();
+      this.mostrarMensaje('Por favor, ingrese su correo institucional')
       return false;
     }
   }
@@ -67,6 +70,14 @@ export class LoginPage implements OnInit {
       duration: duracion ? duracion : 2000
     });
     toast.present();
+  }
+
+  efectoError() {
+    this.error = true;
+
+    setTimeout(() => {
+      this.error = false;
+    }, 2000); // 3000 milisegundos = 3 segundos
   }
 
 }

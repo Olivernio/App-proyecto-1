@@ -1,28 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <!-- Aquí empieza la card -->
+  <ion-toolbar style="color: #152139;">
+    <ion-title><ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: x-large;">Sistema de Asistencia</h1>
+      </ion-title></ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="div-logo-duocuc" style="left: 25%; z-index: 110;">
+    <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
   </div>
+  <!-- Fin de la card -->
+</ion-header>
+<br>
+
+<ion-content>
+
+  <input #fileinput hidden id="input-file" type="file" accept="image/*;capture=camera"
+    (change)="verificarArchivoConQR($event)" />
+
+  <ion-button (click)="cargarImagenDesdeArchivo()" expand="full" shape="round">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Cargar Imagen con Código QR
+  </ion-button>
+
+  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+    <ion-icon slot="start" name="videocam-outline"></ion-icon>
+    Comenzar Escaneo de QR
+  </ion-button>
+
+  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+    Detener escaneo de QR
+  </ion-button>
+
+  <video #video [hidden]="!escaneando" width="100%"></video>
+  <canvas #canvas hidden></canvas>
+
+  <ion-label style="text-align: center;">
+    <p>Hola <span *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</span> escanea el código QR para confirmar
+      tu asistencia</p>
+  </ion-label>
+
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="white">
     <ion-title class="ion-text-center ion-text">
-      Sistema de Asistencia DuocUc
+      Sistema de Asistencia DuocUC <br>
+      &copy; 2023 DuocUC
     </ion-title>
   </ion-toolbar>
 </ion-footer>

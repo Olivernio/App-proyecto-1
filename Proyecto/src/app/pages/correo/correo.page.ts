@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // , AfterViewInit
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
@@ -10,11 +10,14 @@ import { NavController } from '@ionic/angular';
   templateUrl: './correo.page.html',
   styleUrls: ['./correo.page.scss'],
 })
-export class CorreoPage implements OnInit {
+export class CorreoPage implements OnInit { // , AfterViewInit
 
+  public usuario: Usuario | undefined;
+  public error: boolean = false;
   public correo: string = '';
 
-  constructor(private router: Router,private alertController: AlertController, private toastController: ToastController) { }
+  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController) {
+  }
 
   ngOnInit() {
   }
@@ -24,20 +27,24 @@ export class CorreoPage implements OnInit {
   }
 
   public ingresarPaginaValidarRespuestaSecreta(): void {
-    const usuario = new Usuario('', '', '', '', '');
+    const usuario = new Usuario('', '', '', '', '', '');
     const usuarioEncontrado = usuario.buscarUsuarioValidoCorreo(this.correo);
-    if (this.correo == '' || this.correo == ' ') {
-      this.mostrarMensajeTostada('Por favor escriba algun correo valido');
-    } else if (!usuarioEncontrado) {
-      this.mostrarMensajeIncorrecto('El correo ingresado no se encuentra registrado en el sistema');
-    }
-    else {
+    if (usuarioEncontrado) {
       const navigationExtras: NavigationExtras = {
         state: {
           usuario: usuarioEncontrado
         }
       };
       this.router.navigate(['/pregunta'], navigationExtras);
+    // } else if (this.correo == '' || this.correo == ' ') {
+    //   this.mostrarMensajeTostada('Por favor, ingrese su correo institucional');
+    } else if (!this.correo.endsWith('@duocuc.cl')) {
+      this.mostrarMensajeTostada('Por favor, ingrese su correo institucional (DuocUC)');
+    } else if (!usuarioEncontrado) {
+      this.efectoError();
+      this.mostrarMensajeTostada('¡El correo no se encuentra en el sistema!');
+    } else {
+      this.mostrarMensajeTostada('Por favor, ingrese su correo institucional')
     }
   }
 
@@ -57,6 +64,14 @@ export class CorreoPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  efectoError(): void {
+    this.error = true;
+
+    setTimeout(() => {
+      this.error = false;
+    }, 2000); // 3000 milisegundos = 3 segundos
   }
 
 }

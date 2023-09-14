@@ -1,4 +1,4 @@
-
+<img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro">
 
 <div id="body">
   <!-- DIV que contiene las figuras del fondo -->
@@ -9,46 +9,50 @@
     <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo">
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
+  <div id="div-logo-duocuc-700-min">
+    <ion-img id="logo-duocuc-700-min" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+  </div>
 
-  <!-- DIV que tiene el logo DuocUC -->
-  <ion-card id="card" style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%;" >
-    <div id="div-logo-duocuc">
-      <ion-img
-          id="logo-duocuc"
-          src="assets/image/DuocUC-light.svg"
-          alt="Instituto Profesional DuocUC"
-        ></ion-img>
+  <!-- Aquí empieza la card -->
+  <div id="container-card" style="align-content: center; align-items: center;">
+    <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110;">
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <!-- ========== Subtitulo ========== -->
-    <ion-title class="ion-padding-top ion-text-center" >
-      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
-          style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
-    </ion-title>
-    <!-- ========== FORMULARIO ========== -->
-    <div class="ion-padding-vertical">
-      <ion-card class="ion-text-center ion-padding-vertical" >
-        <h2>Contraseña recuperada</h2>
-        <ion-img class="imagencorrecta" src="assets/image/correcto1.png"></ion-img>
-        <h1>!CORRECTA!</h1>
-        
-        <div *ngIf="usuario">
-          <ion-text color="primary">
-            <h1>{{ usuario.password }}</h1>
-          </ion-text>
-        </div>        
+    <ion-card class="card">
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
+            style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
+      </ion-title>
+
+      <div class="ion-padding-vertical">
+        <ion-card class="ion-text-center ion-padding-vertical">
+          <h2>Contraseña recuperada</h2>
+          <ion-img class="imagencorrecta" src="assets/image/correcto1.png"></ion-img>
+          <br>
+          <h1>Tu contraseña es:</h1>
+
+          <div *ngIf="usuario">
+            <ion-text color="primary">
+              <h1>{{ usuario.password }}</h1>
+            </ion-text>
+          </div>
+
           <ion-button color="success" routerLink="/login">Iniciar Sesion</ion-button>
-      </ion-card>
-    </div>
-  </ion-card>
+        </ion-card>
+      </div>
+      <!-- Fin del bloque del formulario -->
+    </ion-card>
+  </div>
+  <!-- Fin de la card -->
 
 </div>
 
-  <!-- FOOTER -->
-  <ion-footer> 
-    <ion-toolbar color="white">
-      <ion-title class="ion-text-center ion-text">
-        Sistema de Asistencia DuocUC <br>
-        &copy; 2023 DuocUC - Todos los derechos reservados
-      </ion-title>
-    </ion-toolbar>
-  </ion-footer>
+<!-- FOOTER -->
+<ion-footer>
+  <ion-toolbar color="white">
+    <ion-title class="ion-text-center ion-text">
+      Sistema de Asistencia DuocUC <br>
+      &copy; 2023 DuocUC - Todos los derechos reservados
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
