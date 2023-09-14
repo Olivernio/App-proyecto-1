@@ -38,6 +38,10 @@ export class PreguntaPage implements OnInit {
 
   ngOnInit() { }
 
+  public volver(): void {
+    this.router.navigate(['/']);
+  }
+
   public PaginaValidarRespuestaSecreta(): void {
     // Verificar si usuario existe antes de acceder a sus propiedades
     if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {

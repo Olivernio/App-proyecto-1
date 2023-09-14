@@ -1,58 +1,73 @@
-<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title #titulo style="color:  #ffcc00;">
-      DuocUC
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- DIV que simula el body -->
+<div id="body">
+  <!-- DIV que contiene las figuras del fondo -->
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
+    <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo">
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
+  </div>
 
-<ion-content>
-  <ion-card style="background-color: aliceblue;">
+  <!-- DIV que tiene el logo DuocUC -->
+  <div id="container-logo-duocuc">
+    <div id="div-logo-duocuc">
+      <ion-img
+          id="logo-duocuc"
+          src="assets/image/DuocUC-light.svg"
+          alt="Instituto Profesional DuocUC"
+        ></ion-img>
+    </div>
+  </div>
+
+  <!-- Aquí empieza la card -->
+  <ion-card id="card" style="background-color: #152139; border-top-right-radius: 20%;">
     <ion-title class="ion-padding-top ion-text-center">
-      <h1>Institucion Duoc UC</h1>
+      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
       <ion-label>
-        <p>Sistema de Asistencia DUOC </p>
+        <p>¡Bienvenido!</p>
       </ion-label>
     </ion-title>
 
     <div class="ion-padding-vertical">
       <ion-card class="ion-text-center ion-padding-vertical">
-        <ion-card-title class="ion-text-center">
-          <ion-label>
-            <h2>¡Bienvenido!</h2>
-          </ion-label>
-          <hr color="#C7C7C7">
-        </ion-card-title>
+        <!-- Fomulario del login -->
         <form>
-          <ion-card-content>
-            <ion-item>
-              <ion-input name="correo" label="Correo" labelPlacement="floating" type="text"[(ngModel)]="usuario.correo" ></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input name="password" label="Contraseña" labelPlacement="floating" type="password"
+          <ion-card-content id="card-form">
+            <div id="div-input-correo">
+                <ion-input id="input-correo" name="correo" label="Correo" labelPlacement="floating" type="text"[(ngModel)]="usuario.correo"></ion-input>
+            </div>
+            <div id="div-input-password">
+              <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating" type="password"
                 [(ngModel)]="usuario.password"></ion-input>
-            </ion-item>
-
+            </div>
             <ion-button shape="block" (click)="ingresar()" color="success">Ingresar</ion-button>
-
           </ion-card-content>
         </form>
 
+        <!-- Botón para recuperar contraseña -->
         <ion-label>
-          <ion-button  (click)="ingresarcorreorecuperacion()">Recuperar contraseña</ion-button>
+          ¿Olvidaste de tu contraseña?
         </ion-label>
-      </ion-card>
+        <ion-label>
+          <ion-button  (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
+        </ion-label>
 
+      </ion-card>
 
     </div>
   </ion-card>
-</ion-content>
+  <!-- Fin de la card -->
 
-<ion-footer>
-  <ion-toolbar color="dark">
-    <ion-title class="ion-text-center ion-text">
-      Sistema de Asistencia DuocUc
-    </ion-title>
-  </ion-toolbar>
-</ion-footer>
+  <!-- FOOTER -->
+  <ion-footer>
+    <ion-toolbar color="white">
+      <ion-title class="ion-text-center ion-text">
+        Sistema de Asistencia DuocUC <br>
+        &copy; 2023 DuocUC - Todos los derechos reservados
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+</div>
+<!-- Fin del body simulado -->

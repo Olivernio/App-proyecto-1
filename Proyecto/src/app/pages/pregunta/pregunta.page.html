@@ -1,29 +1,43 @@
-<!-- ========== HEADER DE LA PÁGINA ========== -->
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <div id="header-container">
-      <!-- <ion-title #titulo style="color: #ffcc00">DuocUC</ion-title> -->
+<div id="body">
+
+  <ion-header id="header" [translucent]="true">
+    <div class="columna">
+      <ion-button (click)="volver()" color="warning"><ion-icon id="back" name="arrow-undo-circle-outline"></ion-icon>Volver</ion-button>
+    </div>
+    <div class="columna">
+      <ion-toolbar color="light">
+        <ion-title #titulo style="color:  #ffcc00;">Recuperación de contraseña</ion-title>
+      </ion-toolbar>
+    </div>
+  </ion-header>
+
+  <!-- DIV que contiene las figuras del fondo -->
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
+    <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo">
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
+  </div>
+
+  <!-- DIV que tiene el logo DuocUC -->
+  <div id="container-logo-duocuc">
+    <div id="div-logo-duocuc">
       <ion-img
-        id="duoc-img"
-        src="assets/image/DuocUC.svg"
-        alt="Instituto Profesional DuocUC"
-      ></ion-img>
+          id="logo-duocuc"
+          src="assets/image/DuocUC-light.svg"
+          alt="Instituto Profesional DuocUC"
+        ></ion-img>
     </div>
-  </ion-toolbar>
-</ion-header>
+  </div>
 
-<ion-content>
-  <ion-card style="background-color: aliceblue">
-    <div id="container-back">
-    <ion-icon id="back" name="arrow-undo-circle-outline"></ion-icon><p id="back-txt">Volver a iniciar sesión</p>
-
-    </div>
+  <ion-card id="card" style="background-color: #152139; border-top-right-radius: 20%;">
     <ion-title class="ion-padding-top ion-text-center">
-      <h1>Sistema de Asistencia DUOC</h1>
-      <ion-label>
-        <p>Paso 2: Responde la pregunta</p>
-      </ion-label>
+      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
     </ion-title>
+    <ion-label style="text-align: center;">
+      <p>Paso 2: responde la pregunta secreta <span *ngIf="usuario">{{ usuario.nombre }}</span></p>
+    </ion-label>
     <div class="ion-padding-vertical">
       <ion-card class="ion-text-center ion-padding-vertical">
         <div *ngIf="usuario">
@@ -31,29 +45,31 @@
             >{{ usuario.preguntaSecreta }}</ion-card-title
           >
         </div>
-        <hr color="#C7C7C7" />
 
         <!-- ========== FORMULARIO ========== -->
-        <ion-card-content>
+        <ion-card-content id="card-form">
           <form>
-            <ion-item>
-              <ion-input type="text"label="Respuesta"[(ngModel)]="respuesta"name="respuesta"labelPlacement="floating"></ion-input>
-            </ion-item>
+            <div id="div-input-respuesta">
+              <ion-input id="input-respuesta" type="text"label="Respuesta"[(ngModel)]="respuesta"name="respuesta"labelPlacement="floating"></ion-input>
+            </div>
             <div>
-              <ion-button class="ion-padding-top"(click)="PaginaValidarRespuestaSecreta()">Validar Respuesta</ion-button>
+              <ion-button class="ion-padding-top"(click)="PaginaValidarRespuestaSecreta()" color="success">Validar Respuesta</ion-button>
             </div>
           </form>
         </ion-card-content>
       </ion-card>
     </div>
   </ion-card>
-</ion-content>
 
-<!-- ========== FOOTER DE LA PÁGINA ========== -->
-<ion-footer>
-  <ion-toolbar color="dark">
-    <ion-title class="ion-text-center ion-text">
-      Sistema de Asistencia DuocUC
-    </ion-title>
-  </ion-toolbar>
-</ion-footer>
+  <!-- FOOTER -->
+  <ion-footer>
+    <ion-toolbar color="white">
+      <ion-title class="ion-text-center ion-text">
+        Sistema de Asistencia DuocUC <br>
+        &copy; 2023 DuocUC - Todos los derechos reservados
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+</div>
+<!-- Fin del body simulado -->

@@ -1,33 +1,115 @@
-ion-content{
-    --padding-top: 20px;
-    --padding-bottom: 20px;
-    --padding-end: 20px;
-    --padding-start: 20px;
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+}
+
+#body{
+  display: contents;
+  background-color: rgb(28 33 32);
+}
+
+#header{
+  background-color: #222428;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+  gap: 10px; /* Espacio entre las columnas */
+}
+
+.columna {
+  padding: 10px;
+}
+
+.contenedor-background{
+  position: relative;
+}
+
+//Background figura #N°
+#bk-f-1{
+  position: absolute;
+  width: 230px;
+  left: -30px;
+  z-index: 1;
+}
+#bk-f-2{
+  position: absolute;
+  width: 230px;
+  right: -70px;
+  z-index: 2;
+}
+#bk-f-3{
+  position: absolute;
+  width: 230px;
+  left: 150px;
+  top: 90px;
+  transform: rotate(-300deg);
+  z-index: 3;
+}
+#bk-f-4{
+  position: absolute;
+  width: 230px;
+  left: -80px;
+  top: 90px;
+  transform: rotate(-250deg);
+  z-index: 4;
+}
+#bk-f-5{
+  position: absolute;
+  width: 230px;
+  right: -100px;
+  top: 230px;
+  transform: rotate(15deg);
+  z-index: 5;
+}
+
+#container-logo-duocuc {
+  top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#div-logo-duocuc {
+  width: 430px;
+  height: 120px;
+  background-color: #002138;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: #002138 0px 25px 20px -20px;
+
+  #logo-duocuc {
+    margin-top: 20px;
+    margin-left: 10%;
+    width: 80%;
+    height: auto;
   }
-  
-  #duoc-img {
-    margin-left: 20px;
-  width: 100px;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+}
+
+img, ion-img {
   pointer-events: none;
 }
 
-#container-back{
-    position: absolute;
-    width: 50%;
+#card{
+  top: -50px;
+  box-shadow: #152139 0px 22px 70px 4px;
+  z-index: 100;
 }
 
-#back{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+#div-input-respuesta{
+  border-radius: 50px;
+  background-color: rgb(128, 128, 128);
+  text-align: left;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-#back-txt{
-    position: absolute;
-    display: inline-block;
-    width: auto;
+#input-respuesta{
+  width: 90%;
+  color: wheat;
 }
