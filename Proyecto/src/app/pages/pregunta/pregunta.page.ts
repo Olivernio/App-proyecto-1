@@ -18,7 +18,7 @@ export class PreguntaPage implements OnInit {
   ) {
     this.activatedRoute.queryParams.subscribe(params => {
       // Verificar si extras y state existen antes de acceder a sus propiedades
-      const state = this.router.getCurrentNavigation()?.extras?.state;
+      const state = this.router.getCurrentNavigation()?.extras.state;
       if (state) {
         // Verificar si usuario existe antes de acceder a sus propiedades
         if (state['usuario']) {
@@ -35,10 +35,12 @@ export class PreguntaPage implements OnInit {
   ngOnInit() {
   }
 
+  
+
   public PaginaValidarRespuestaSecreta(): void {
     // Verificar si usuario existe antes de acceder a sus propiedades
     if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-      alert('Tu respuesta es correcta: ' + this.usuario.password);
+      alert('Tu respuesta es correcta, Su contraseña es: ' + this.usuario.password);
     } else {
       alert('Tu respuesta es incorrecta ');
     }

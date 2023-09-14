@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 
+
 @Component({
   selector: 'app-correo',
   templateUrl: './correo.page.html',

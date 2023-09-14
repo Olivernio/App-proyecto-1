@@ -26,7 +26,7 @@
         <form>
           <ion-card-content>
             <ion-item>
-              <ion-input name="correo" label="Correo" labelPlacement="floating" type="text"[(ngModel)]="usuario.correo"></ion-input>
+              <ion-input name="correo" label="Correo" labelPlacement="floating" type="text"[(ngModel)]="usuario.correo" ></ion-input>
             </ion-item>
 
             <ion-item>
@@ -40,8 +40,7 @@
         </form>
 
         <ion-label>
-          <br>
-          <a (click)="ingresarcorreorecuperacion()">Recuperar Contraseña</a>
+          <ion-button  (click)="ingresarcorreorecuperacion()">Validar Respuesta</ion-button>
         </ion-label>
       </ion-card>
     </div>

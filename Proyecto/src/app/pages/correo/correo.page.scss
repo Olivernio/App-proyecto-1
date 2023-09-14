@@ -1,45 +1,7 @@
 ion-content{
-    --padding-top: 20px;
-    --padding-bottom: 20px;
-    --padding-end: 20px;
-    --padding-start: 20px;
-  }
-  /* Estilo para el encabezado */
-ion-header {
-    ion-toolbar {
-      --background: #007BFF; /* Color de fondo del encabezado */
-      --color: #fff; /* Color del texto en el encabezado */
-    }
-  }
-  
-  /* Estilo para el contenido */
-  ion-content {
-    background-color: #f0f0f0; /* Color de fondo del contenido */
-  }
-  
-  /* Estilo para la tarjeta */
-  ion-card {
-    background-color: #fff; /* Color de fondo de la tarjeta */
-    border-radius: 10px; /* Radio de borde para la tarjeta */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-    
-    ion-card-title {
-      color: #333; /* Color del título de la tarjeta */
-      font-weight: bold; /* Peso de fuente en negrita */
-      font-size: 24px; /* Tamaño de fuente del título */
-      margin-bottom: 16px; /* Margen inferior del título */
-    }
-    
-    ion-input {
-      margin-bottom: 16px; /* Margen inferior para el campo de entrada */
-    }
-  
-    a {
-      color: #007BFF; /* Color del enlace */
-      text-decoration: none; /* Sin subrayado */
-      display: block; /* Hacer que el enlace sea un bloque para que sea más fácil hacer clic */
-      text-align: center; /* Centrar el texto del enlace */
-      font-weight: bold; /* Peso de fuente en negrita */
-    }
-  }
-  
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+}
+

@@ -1,15 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <ion-title #titulo style="color: 	#ffcc00;">Correo</ion-title>
+    <ion-title #titulo style="color: 	#ffcc00;">DuocUc</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-card>
-    <ion-card-title>Ingresa Tu Correo</ion-card-title>
-    <ion-input type="text" [(ngModel)]="correo"  label="Correo" name="correo" labelPlacement="floating" placeholder="Ingresa Tu Correo"></ion-input>
-    <a (click)="ingresarPaginaValidarRespuestaSecreta()">Recuperar Contraseña</a>
+  <ion-card style="background-color: aliceblue;">
+    <ion-title class="ion-padding-top ion-text-center">
+      
+      <h1>Institucion Duoc UC</h1>
+      <ion-label>
+        <p>Sistema de Asistencia DUOC </p>
+      </ion-label>
+    </ion-title>
+    <div class="ion-padding-vertical">
+      <ion-card class="ion-text-center ion-padding-vertical">
+        <ion-card-title class="ion-text-center">Ingresa Tu Correo</ion-card-title>
+        <hr color="#C7C7C7">
+        <ion-card-content>
+          <form>
+            <ion-item>
+              <ion-input type="text" label="Correo" [(ngModel)]="correo" name="correo"
+                labelPlacement="floating"></ion-input>
+            </ion-item>
 
+            <ion-button class="ion-padding-top" (click)="ingresarPaginaValidarRespuestaSecreta()">Recuperar Contraseña</ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </ion-card>
 </ion-content>
