@@ -1,10 +1,11 @@
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo negro">
 <div id="body">
   <!-- DIV que contiene las figuras del fondo -->
   <div class="contenedor-background">
     <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
     <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
     <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
-    <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo">
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
 
@@ -12,42 +13,40 @@
   <div id="div-logo-duocuc-700-min">
     <ion-img id="logo-duocuc-700-min" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
   </div>
-<!-- Aquí empieza la card -->
-<div id="container-card" style="align-content: center; align-items: center;">
-  <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110;">
-    <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
-  </div>
-  <ion-card class="card">
-    <ion-title class="ion-padding-top ion-text-center">
-      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
-          style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
-    </ion-title>
 
-    <div class="ion-padding-vertical">
-      <ion-card class="ion-text-center ion-padding-vertical">
-        <ion-card-title class="ion-text-center">¡Lo sentimos!</ion-card-title>
-          <ion-img class="imagenincorrecta" src="assets/image/Incorrecto1.png" alt="Instituto Profesional DuocUC"></ion-img>
-          <ion-label>No has podido responder la pregunta secreta</ion-label> <br>
-          <ion-button fill="outline" (click)="volver()">
-            <ion-icon name="arrow-undo-circle-outline"></ion-icon> Volver a iniciar sesión
-          </ion-button>
-      </ion-card>
-      <div>
-      </div>
+  <!-- Aquí empieza la card -->
+  <div id="container-card" class="ion-text-center ion-padding-vertical"
+    style="align-content: center; align-items: center; z-index: 200;" style="background-color: #152139">
+    <!-- Logo de DuocUC (pantalla pequeña) -->
+    <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <!-- Fin del bloque del formulario -->
-  </ion-card>
-</div>
-<!-- Fin de la card -->
-
-  <!-- FOOTER -->
-  <ion-footer> 
-    <ion-toolbar color="white">
-      <ion-title class="ion-text-center ion-text">
-        Sistema de Asistencia DuocUC <br>
-        &copy; 2023 DuocUC - Todos los derechos reservados
+    <ion-card class="card" style="background-color: #152139">
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: xx-large">
+          Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+        </h1>
       </ion-title>
-    </ion-toolbar>
-  </ion-footer>
 
+      <!-- Mensaje de la card -->
+      <div class="ion-padding-vertical">
+        <h2>¡Lo sentimos!</h2>
+        <p>No has podido responder la pregunta secreta <span *ngIf="usuario">{{ usuario.nombre }} </span> :(</p>
+        <ion-img class="imagencorrecta" src="assets/image/Incorrecto1.png"></ion-img>
+        <br>
+        <ion-button color="success" routerLink="/login">Iniciar Sesion</ion-button>
+      </div>
+    </ion-card>
+  </div>
+  <!-- Fin de la card -->
 </div>
+
+<!-- FOOTER -->
+<ion-footer>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center ion-text">
+      Sistema de Asistencia DuocUC <br>
+      &copy; 2023 DuocUC
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,5 +1,6 @@
-<!-- <img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro">
--->
+<!-- <img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro"> -->
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco">
+
 
 <!-- DIV que simula el body -->
 <div id="body">
@@ -8,7 +9,7 @@
     <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
     <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
     <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
-    <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo">
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
 
@@ -20,7 +21,7 @@
   </div>
 
   <!-- Aquí empieza la card -->
-  <ion-card [ngClass]="{'card-error': error}" class="card">
+  <ion-card [ngClass]="{'card-error': error}" class="card ion-text-center">
     <ion-title class="ion-padding-top ion-text-center">
       <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
           style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
@@ -29,32 +30,30 @@
       </ion-label>
     </ion-title>
 
-    <div class="ion-padding-vertical">
-      <ion-card class="ion-text-center ion-padding-vertical">
-        <!-- Fomulario del login -->
-        <form>
-          <ion-card-content id="card-form">
-            <div id="div-input-correo">
-              <ion-input id="input-correo" name="correo" label="Correo" labelPlacement="floating" type="text"
-                [(ngModel)]="usuario.correo"></ion-input>
-            </div>
-            <div id="div-input-password">
-              <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating"
-                type="password" [(ngModel)]="usuario.password"></ion-input>
-            </div>
-            <ion-button shape="block" (click)="ingresar()" color="success">Ingresar</ion-button>
-          </ion-card-content>
-        </form>
+    <div id="card-form">
+      <!-- Fomulario del login -->
+      <form id="form">
+        <div id="div-input-correo">
+          <ion-input id="input-correo" name="correo" label="Correo" labelPlacement="floating" type="text"
+            [(ngModel)]="usuario.correo"></ion-input>
+        </div>
+        <div id="div-input-password">
+          <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating" type="password"
+            [(ngModel)]="usuario.password"></ion-input>
+        </div>
+        <ion-button shape="block" (click)="ingresar()" color="success">Ingresar</ion-button>
 
-        <!-- Botón para recuperar contraseña -->
-        <ion-label>
-          ¿Olvidaste de tu contraseña?
-        </ion-label>
-        <ion-label>
-          <ion-button id="btn-recuperar" (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
-        </ion-label>
+      </form>
 
-      </ion-card>
+      <!-- Botón para recuperar contraseña -->
+      <ion-label>
+        ¿Olvidaste de tu contraseña?
+      </ion-label>
+      <ion-label>
+        <ion-button id="btn-recuperar" (click)="ingresarcorreorecuperacion()" color="warning">Recuperar
+          contraseña</ion-button>
+      </ion-label>
+
 
     </div>
   </ion-card>
@@ -62,9 +61,9 @@
 
 
   <!-- FOOTER -->
-  <ion-footer>
-    <ion-toolbar color="white">
-      <ion-title class="ion-text-center ion-text">
+  <ion-footer class="ion-text-center">
+    <ion-toolbar color="dark">
+      <ion-title>
         Sistema de Asistencia DuocUC <br>
         &copy; 2023 DuocUC
       </ion-title>

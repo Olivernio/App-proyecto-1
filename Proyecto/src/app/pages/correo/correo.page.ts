@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'; // , AfterViewInit
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
-import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -10,7 +9,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './correo.page.html',
   styleUrls: ['./correo.page.scss'],
 })
-export class CorreoPage implements OnInit { // , AfterViewInit
+export class CorreoPage implements OnInit {
 
   public usuario: Usuario | undefined;
   public error: boolean = false;
@@ -20,10 +19,6 @@ export class CorreoPage implements OnInit { // , AfterViewInit
   }
 
   ngOnInit() {
-  }
-
-  public volver(): void {
-    this.router.navigate(['/']);
   }
 
   public ingresarPaginaValidarRespuestaSecreta(): void {
@@ -64,6 +59,11 @@ export class CorreoPage implements OnInit { // , AfterViewInit
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  // Botón de volver
+  public volver(): void {
+    this.router.navigate(['/']);
   }
 
   efectoError(): void {

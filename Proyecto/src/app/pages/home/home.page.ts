@@ -122,7 +122,6 @@ export class HomePage implements AfterViewInit {
     this.sede = objetoDatosQR.sede;
 
     const navigationExtras: NavigationExtras = {
-      queryParams: {}, // Puedes agregar parámetros de consulta si es necesario
       state: {json: objetoDatosQR} // Puedes pasar datos adicionales al estado si es necesario
     };
     // Realiza la redirección
@@ -156,6 +155,7 @@ export class HomePage implements AfterViewInit {
     this.escaneando = false;
   }
 
+  // Botón para cargar desde imagen/archivo (local)
   public cargarImagenDesdeArchivo(): void {
     this.limpiarDatos();
     this.fileinput.nativeElement.click();
@@ -174,4 +174,10 @@ export class HomePage implements AfterViewInit {
       }
     }
   }
+
+  // Botón de volver
+  public volver(): void {
+    this.router.navigate(['/']);
+  }
+
 }

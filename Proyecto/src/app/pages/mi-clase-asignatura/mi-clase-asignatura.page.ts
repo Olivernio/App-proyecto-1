@@ -59,4 +59,9 @@ export class MiClaseAsignaturaPage implements OnInit {
   }
 
 
+  // Botón de volver
+  public volver(): void {
+    this.router.navigate(['/']);
+  }
+
 }
