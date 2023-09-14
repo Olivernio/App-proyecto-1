@@ -52,12 +52,11 @@ export class LoginPage implements OnInit {
     }else if (!this.usuario.correo.endsWith('@duocuc.cl')) {
       this.mostrarMensaje('Por favor, ingrese su correo institucional (DuocUC)');
       return false;
-    } else if (!this.validarUsuario(this.usuario)) {
-      this.efectoError();
-      this.mostrarMensaje('¡El correo no se encuentra en el sistema!');
+    }else if (this.usuario.correo.endsWith('@duocuc.cl')) {
+      // this.efectoError();
+      this.mostrarMensaje('Alumno no registrado en el sistema');
       return false;
-    } else {
-      this.efectoError();
+    }else {
       this.mostrarMensaje('Por favor, ingrese su correo institucional')
       return false;
     }

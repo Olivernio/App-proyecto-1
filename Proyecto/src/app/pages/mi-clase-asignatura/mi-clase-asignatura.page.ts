@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Navigation, NavigationExtras, Router } from '@angular/router';
 import jsQR, { QRCode } from 'jsqr';
+import { AlertController, LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-mi-clase-asignatura',
@@ -15,6 +16,7 @@ export class MiClaseAsignaturaPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private alertController: AlertController
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       const navigation: Navigation | null = this.router.getCurrentNavigation();
@@ -43,7 +45,8 @@ export class MiClaseAsignaturaPage implements OnInit {
   public nombreProfesor: string = "";
   public seccion: string = "";
   public sede: string = "";
-
+  public handlerMessage = '';
+  public roleMessage = '';
 
   public mostrarDatosQROrdenados(objetoDatosQR: any): void {
     this.bloqueInicio = objetoDatosQR.bloqueInicio;
@@ -62,6 +65,28 @@ export class MiClaseAsignaturaPage implements OnInit {
   // Botón de volver
   public volver(): void {
     this.router.navigate(['/']);
+  }
+
+  async preguntaCerrarSesion() {
+    const alert = await this.alertController.create({
+      header: '¿Quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.router.navigate(['/']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+    
   }
 
 }

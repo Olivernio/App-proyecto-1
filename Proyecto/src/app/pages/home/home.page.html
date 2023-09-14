@@ -1,60 +1,78 @@
-<ion-header>
-  <!-- Aquí empieza la card -->
-  <ion-toolbar style="color: #152139;">
-    <ion-title><ion-title class="ion-padding-top ion-text-center">
-        <h1 style="color: aliceblue; font-size: x-large;">Sistema de Asistencia</h1>
-      </ion-title></ion-title>
-  </ion-toolbar>
-  <div id="div-logo-duocuc" style="left: 25%; z-index: 110;">
-    <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco">
+<div id="body">
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
-  <!-- Fin de la card -->
-</ion-header>
-<br>
-
-<ion-content>
-
-  <input #fileinput hidden id="input-file" type="file" accept="image/*;capture=camera"
-    (change)="verificarArchivoConQR($event)" />
-
-  <ion-button (click)="cargarImagenDesdeArchivo()" expand="full" shape="round">
-    <ion-icon slot="start" name="camera"></ion-icon>
-    Cargar Imagen con Código QR
-  </ion-button>
-
-  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
-    <ion-icon slot="start" name="videocam-outline"></ion-icon>
-    Comenzar Escaneo de QR
-  </ion-button>
-
-  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
-    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
-    Detener escaneo de QR
-  </ion-button>
-
-  <video #video [hidden]="!escaneando" width="100%"></video>
-  <canvas #canvas hidden></canvas>
-
-  <ion-label style="text-align: center;">
-    <p>Hola <span *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</span> escanea el código QR para confirmar
-      tu asistencia</p>
-  </ion-label>
-
-</ion-content>
 
 
+  <ion-header class="header">
+
+    <ion-title class="ion-padding-top ion-text-center">
+      <h1 style="color: aliceblue; font-size: xx-large">
+        Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+      </h1>
+    </ion-title>
+    <!-- Fin de la card -->
+  </ion-header>
+  <br>
+
+  <div id="container-card" style="align-content: center; align-items: center; z-index: 300; height: 700px;">
+    <ion-card class="card ion-text-center" style="background-color: #152139; height: 70%;">
+
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 *ngIf="usuario" style="color: aliceblue; font-size: xx-large">
+          Hola {{ usuario.nombre }} {{ usuario.apellido }},
+        </h1>
+        <h3 class="font-size: xx-large" color="light">escanea el código QR para
+          confirmar
+          tu asistencia</h3>
+      </ion-title>
+
+      <input #fileinput hidden id="input-file" type="file" accept="image/*;capture=camera"
+        (change)="verificarArchivoConQR($event)" />
+
+      <p><br>Puedes seleccionar el archivo desde tu galería</p>
+      <ion-button class="btn-subir" (click)="cargarImagenDesdeArchivo()" expand="full" shape="round">
+        <ion-icon slot="start" name="qr-code-outline"></ion-icon> Sube el archivo QR
+      </ion-button>
+
+      <p>O puedes escanear el QR con tu cámara</p>
+
+      <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="videocam-outline"></ion-icon>
+        Comenzar Escaneo de QR
+      </ion-button>
+
+      <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+        Detener escaneo de QR
+      </ion-button>
+
+      <video #video [hidden]="!escaneando" width="100%"></video>
+      <canvas #canvas hidden></canvas>
+
+    </ion-card>
+  </div>
+
+</div>
 <ion-toolbar color="white">
   <ion-title class="ion-text-center ion-text">
-    <ion-button (click)="volver()" color="danger">
-      <ion-icon slot="start" name="arrow-undo-circle-outline"></ion-icon> Cerrar sesión
-    </ion-button>
+    <ion-button (click)="preguntaCerrarSesion()">
+      <ion-icon slot="start" name="exit-outline" color="danger"></ion-icon>
+      Cerrar sesión</ion-button>
+    <p>{{ handlerMessage }}</p>
+    <p>{{ roleMessage }}</p>
   </ion-title>
 </ion-toolbar>
 
 <ion-footer>
-  <ion-toolbar color="white">
+  <ion-toolbar color="dark">
     <ion-title class="ion-text-center ion-text">
-      Sistema de Asistencia DuocUC <br>
+      Sistema de Asistencia DuocUC <br />
       &copy; 2023 DuocUC
     </ion-title>
   </ion-toolbar>

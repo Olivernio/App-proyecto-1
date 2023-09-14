@@ -1,100 +1,105 @@
-<ion-header>
-  <!-- Aquí empieza la card -->
-  <ion-toolbar style="color: #152139;">
-    <ion-title><ion-title class="ion-padding-top ion-text-center">
-        <h1 style="color: aliceblue; font-size: x-large;">Sistema de Asistencia</h1>
-      </ion-title></ion-title>
-  </ion-toolbar>
-  <div id="div-logo-duocuc" style="left: 25%; z-index: 110;">
-    <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco">
+<div id="body">
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
-  <!-- Fin de la card -->
-</ion-header>
-<br>
 
-<p class="ion-text-center">¡Asistencia registrada!</p>
-
-<ion-content>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title class="titulodatosdeasignatura" >DATOS DE LA ASIGNATURA</ion-card-title>
-    </ion-card-header>
-    <ion-card-content class="borde">
-      <br />
-
-      <table>
-        <tr>
-          <td class="ancho_columna_titulos">Bloque de Inicio</td>
-          <td>{{bloqueInicio}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Bloque de Término</td>
-          <td>{{bloqueTermino}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Día</td>
-          <td>{{dia}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Hora de Fin</td>
-          <td>{{horaFin}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Hora de Inicio</td>
-          <td>{{horaInicio}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Sigla</td>
-          <td>{{idAsignatura}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Nombre de Asignatura</td>
-          <td>{{nombreAsignatura}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Nombredel Profesor</td>
-          <td>{{nombreProfesor}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Sección</td>
-          <td>{{seccion}}</td>
-        </tr>
-
-        <tr></tr>
-        <tr>
-          <td>Sede</td>
-          <td>{{sede}}</td>
-        </tr>
-        <tr></tr>
-      </table>
-    </ion-card-content>
-  </ion-card>
-  <!-- <ion-button color="danger" (click)="cerrarSesion()" >Cerrar Sesion</ion-button> -->
+  <!-- //////////////HEADER//////////// -->
+  <ion-header class="header">
+    <ion-title class="ion-padding-top ion-text-center">
+      <h1 style="color: aliceblue; font-size: xx-large">
+        Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+      </h1>
+    </ion-title>
+  </ion-header>
+  <br>
   
-</ion-content>
+  <!-- Contenido de datos de la Asignatura -->
+  <ion-content style="z-index: 200;">
+    <ion-card class="card ion-text-center" style="background-color: #152139; height: 60%;">
+      <ion-card-header>
+        <ion-card-title class="titulodatosdeasignatura" style="color: white;">DATOS DE LA ASIGNATURA</ion-card-title>
+        <p class="ion-text-center">¡Asistencia registrada!</p>
+      </ion-card-header>
+      <ion-card-content class="borde">
+        <br />
+
+        <table class="datostabla">
+          <tr>
+            <td class="ancho_columna_titulos">Bloque de Inicio</td>
+            <td>{{bloqueInicio}}</td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>Bloque de Término</td>
+            <td>{{bloqueTermino}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Día</td>
+            <td>{{dia}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Hora de Inicio</td>
+            <td>{{horaInicio}}</td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>Hora de Fin</td>
+            <td>{{horaFin}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Sigla</td>
+            <td>{{idAsignatura}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Nombre de Asignatura</td>
+            <td>{{nombreAsignatura}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Nombredel Profesor</td>
+            <td>{{nombreProfesor}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Sección</td>
+            <td>{{seccion}}</td>
+          </tr>
+
+          <tr></tr>
+          <tr>
+            <td>Sede</td>
+            <td>{{sede}}</td>
+          </tr>
+          <tr></tr>
+        </table>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  <!-- Cierre de contenido datos Asignatura-->
+</div>
 
 <ion-toolbar color="white">
   <ion-title class="ion-text-center ion-text">
-    <ion-button (click)="volver()" color="danger">
-      <ion-icon slot="start" name="arrow-undo-circle-outline"></ion-icon> Cerrar sesión
-    </ion-button>
+    <ion-button (click)="preguntaCerrarSesion()" color="danger">
+      <ion-icon slot="start" name="exit-outline"></ion-icon> 
+      Cerrar sesión</ion-button>
+<p>{{ handlerMessage }}</p>
+<p>{{ roleMessage }}</p>
   </ion-title>
 </ion-toolbar>
 

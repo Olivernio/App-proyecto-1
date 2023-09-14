@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Navigation, NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 import jsQR, { QRCode } from 'jsqr';
@@ -37,10 +37,14 @@ export class HomePage implements AfterViewInit {
   public seccion: string = '';
   public sede: string = '';
 
+  public handlerMessage = '';
+  public roleMessage = '';
+
   public constructor(
     private loadingController: LoadingController,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private alertController: AlertController) {
       this.activatedRoute.queryParams.subscribe((params) => {
         const navigation: Navigation | null = this.router.getCurrentNavigation();
         if (navigation) {
@@ -133,8 +137,6 @@ export class HomePage implements AfterViewInit {
 
   }
 
-
-
   async verificarVideo() {
     if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
       if (this.loading) {
@@ -182,6 +184,28 @@ export class HomePage implements AfterViewInit {
   // Botón de volver
   public volver(): void {
     this.router.navigate(['/']);
+  }
+
+  async preguntaCerrarSesion() {
+    const alert = await this.alertController.create({
+      header: '¿Quieres cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.router.navigate(['/']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+    
   }
 
 }
