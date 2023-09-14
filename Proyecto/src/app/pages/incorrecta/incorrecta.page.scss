@@ -1,0 +1,126 @@
+ion-content {
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+  }
+  
+  #body{
+    display: contents;
+    background-color: rgb(28 33 32);
+  }
+  
+  #header{
+    background-color: #222428;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+    gap: 10px; /* Espacio entre las columnas */
+  }
+  
+  .columna {
+    padding: 10px;
+  }
+  
+  .contenedor-background{
+    position: relative;
+  }
+  
+  //Background figura #N°
+  #bk-f-1{
+    position: absolute;
+    width: 230px;
+    left: -30px;
+    z-index: 1;
+  }
+  #bk-f-2{
+    position: absolute;
+    width: 230px;
+    right: -70px;
+    z-index: 2;
+  }
+  #bk-f-3{
+    position: absolute;
+    width: 230px;
+    left: 150px;
+    top: 90px;
+    transform: rotate(-300deg);
+    z-index: 3;
+  }
+  #bk-f-4{
+    position: absolute;
+    width: 230px;
+    left: -80px;
+    top: 90px;
+    transform: rotate(-250deg);
+    z-index: 4;
+  }
+  #bk-f-5{
+    position: absolute;
+    width: 230px;
+    right: -100px;
+    top: 230px;
+    transform: rotate(15deg);
+    z-index: 5;
+  }
+  
+
+  
+
+  .imagenincorrecta {
+    /* Establecer un ancho y alto para la imagen */
+    width: 200px;
+    height: 150px;
+    /* Agregar un borde alrededor de la imagen */  
+    /* Agregar margen y centrar la imagen horizontalmente */
+    margin: 0 auto;
+  
+    /* Aplicar bordes redondeados */
+    border-radius: 10px; /* Puedes ajustar el valor según lo desees */
+  
+    /* Agregar sombra */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  
+  #div-logo-duocuc {
+    width: 150px;
+    height: 50px;
+    background-color: #002138;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: #002138 0px 25px 20px -20px;
+  
+    #logo-duocuc {
+      margin-top: 20px;
+      margin-left: 10%;
+      width: 80%;
+      height: auto;
+    }
+  }
+  
+  img, ion-img {
+    pointer-events: none;
+  }
+  
+  #card{
+    box-shadow: #152139 0px 22px 70px 4px;
+    z-index: 100;
+  }
+  
+  #div-input-correo{
+    border-radius: 50px;
+    background-color: rgb(128, 128, 128);
+    text-align: left;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  #input-correo{
+    width: 90%;
+    color: wheat;
+  }

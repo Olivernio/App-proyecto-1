@@ -27,7 +27,7 @@ export class CorreoPage implements OnInit {
     const usuario = new Usuario('', '', '', '', '');
     const usuarioEncontrado = usuario.buscarUsuarioValidoCorreo(this.correo);
     if (this.correo == '' || this.correo == ' ') {
-      this.mostrarMensajeTostada('escriba algooo');
+      this.mostrarMensajeTostada('Por favor escriba algun correo valido');
     } else if (!usuarioEncontrado) {
       this.mostrarMensajeIncorrecto('El correo ingresado no se encuentra registrado en el sistema');
     }
@@ -52,8 +52,8 @@ export class CorreoPage implements OnInit {
 
   public async mostrarMensajeIncorrecto(mensaje: string) {
     const alert = await this.alertController.create({
-      message: `<img src="assets/image/correcto.png" />`,
-      header: 'Responde la pregunta',
+      header: 'Respuesta Incorrecta',
+      message: `Escriba algun correo valido o registrado en el sistema!!`,
       buttons: ['OK'],
     });
     await alert.present();

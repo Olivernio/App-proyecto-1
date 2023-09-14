@@ -64,13 +64,24 @@ ion-content {
   z-index: 5;
 }
 
-#container-logo-duocuc {
-  top: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
+
+
+
+.imagenincorrecta {
+  /* Establecer un ancho y alto para la imagen */
+  width: 200px;
+  height: 150px;
+  /* Agregar un borde alrededor de la imagen */  
+  /* Agregar margen y centrar la imagen horizontalmente */
+  margin: 0 auto;
+
+  /* Aplicar bordes redondeados */
+  border-radius: 10px; /* Puedes ajustar el valor según lo desees */
+
+  /* Agregar sombra */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
+
 
 #div-logo-duocuc {
   width: 150px;
@@ -99,7 +110,7 @@ img, ion-img {
   z-index: 100;
 }
 
-#div-input-respuesta{
+#div-input-correo{
   border-radius: 50px;
   background-color: rgb(128, 128, 128);
   text-align: left;
@@ -109,7 +120,7 @@ img, ion-img {
   margin-bottom: 10px;
 }
 
-#input-respuesta{
+#input-correo{
   width: 90%;
   color: wheat;
 }

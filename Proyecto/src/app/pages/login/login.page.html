@@ -12,18 +12,15 @@
   <!-- DIV que tiene el logo DuocUC -->
   <div id="container-logo-duocuc">
     <div id="div-logo-duocuc">
-      <ion-img
-          id="logo-duocuc"
-          src="assets/image/DuocUC-light.svg"
-          alt="Instituto Profesional DuocUC"
-        ></ion-img>
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
   </div>
 
   <!-- Aquí empieza la card -->
-  <ion-card id="card" style="background-color: #152139; border-top-right-radius: 20%;">
+  <ion-card id="card" style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%;">
     <ion-title class="ion-padding-top ion-text-center">
-      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
+      <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
+          style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
       <ion-label>
         <p>¡Bienvenido!</p>
       </ion-label>
@@ -35,11 +32,12 @@
         <form>
           <ion-card-content id="card-form">
             <div id="div-input-correo">
-                <ion-input id="input-correo" name="correo" label="Correo" labelPlacement="floating" type="text"[(ngModel)]="usuario.correo"></ion-input>
+              <ion-input id="input-correo" name="correo" label="Correo" labelPlacement="floating" type="text"
+                [(ngModel)]="usuario.correo"></ion-input>
             </div>
             <div id="div-input-password">
-              <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating" type="password"
-                [(ngModel)]="usuario.password"></ion-input>
+              <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating"
+                type="password" [(ngModel)]="usuario.password"></ion-input>
             </div>
             <ion-button shape="block" (click)="ingresar()" color="success">Ingresar</ion-button>
           </ion-card-content>
@@ -50,7 +48,7 @@
           ¿Olvidaste de tu contraseña?
         </ion-label>
         <ion-label>
-          <ion-button  (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
+          <ion-button (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
         </ion-label>
 
       </ion-card>
