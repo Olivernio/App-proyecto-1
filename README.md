@@ -5,10 +5,10 @@ Primera entrega del proyecto de 'Programación de aplicaciones móviles'
 Caso semestral: DuocUC Asistencia
 
 Integrantes
- - MATIAS SALINAS
- - DIEGO MELLA
- - MARTIN MONDACA
- - DIEGO SILVA
+ - Matías Salinas
+ - Diedo Mella
+ - Martín Mondaca
+ - diego Silva
 
 Profesor:
  - Ceferino Sotelo
