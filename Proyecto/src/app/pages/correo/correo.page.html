@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title #titulo style="color: 	#ffcc00;">Correo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>Ingresa Tu Correo</ion-card-title>
+    <ion-input type="text" [(ngModel)]="correo"  label="Correo" name="correo" labelPlacement="floating" placeholder="Ingresa Tu Correo"></ion-input>
+    <a (click)="ingresarPaginaValidarRespuestaSecreta()">Recuperar Contraseña</a>
+
+  </ion-card>
+</ion-content>
