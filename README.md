@@ -11,4 +11,4 @@ Integrantes
  - Diego Silva
 
 Profesor:
- - Ceferino Sotelo
+ - Cristian Gómez
