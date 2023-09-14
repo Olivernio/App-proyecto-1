@@ -4,7 +4,7 @@ import { LoginPage } from './login.page';
 describe('LoginPage', () => {
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
-
+  // @ts-ignore
   beforeEach(async(() => {
     fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;

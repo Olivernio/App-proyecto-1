@@ -5,4 +5,29 @@ ion-content{
     --padding-start: 20px;
   }
   
-  
+  #duoc-img {
+    margin-left: 20px;
+  width: 100px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+#container-back{
+    position: absolute;
+    width: 50%;
+}
+
+#back{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+#back-txt{
+    position: absolute;
+    display: inline-block;
+    width: auto;
+}

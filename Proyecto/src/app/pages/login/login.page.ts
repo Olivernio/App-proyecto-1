@@ -33,11 +33,15 @@ export class LoginPage implements OnInit {
         usuario: this.usuario
       }
     };
-    this.router.navigate(['/home'], navigationExtras);
+    this.router.navigate(['/qr-reader'], navigationExtras);
   }
 
   public ingresarcorreorecuperacion(): void {
     this.router.navigate(['/correo']);
+  }
+
+  public ingresarqr(): void {
+    this.router.navigate(['/qr-reader']);
   }
 
 

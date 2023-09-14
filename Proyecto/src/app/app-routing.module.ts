@@ -25,8 +25,12 @@ const routes: Routes = [
     path: 'pregunta',
     loadChildren: () => import('./pages/pregunta/pregunta.module').then( m => m.PreguntaPageModule)
   },
-];
+  {
+    path: 'qr-reader',
+    loadChildren: () => import('./pages/qr-reader/qr-reader.module').then( m => m.QrReaderPageModule)
+  },
 
+];
 
 
 

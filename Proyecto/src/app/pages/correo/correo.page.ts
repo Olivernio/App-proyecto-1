@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { ToastController, AlertController } from '@ionic/angular'; 
 import { Usuario } from 'src/app/model/usuario';
-import { AlertController } from '@ionic/angular';
 
 
 @Component({
