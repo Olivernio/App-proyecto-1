@@ -32,7 +32,7 @@ export class Usuario{
 
   public listaUsuariosValidos(): Usuario[] {
     const lista = [];
-    lista.push(new Usuario('d.gomez@duocuc.cl', '1234', 'Diego', 'Gomez', '¿Cual es tu VideoJuego Favorito?', 'albion'));
+    lista.push(new Usuario('d.gomez@duocuc.cl', '1234', 'Diego', 'Gomez', '¿Cuál es tu VideoJuego favorito?', 'albion'));
     lista.push(new Usuario('jgonzales@duocuc.cl', '1235', 'Juan', 'Gonzales', '¿Cuál es tu animal favorito?', 'gato'));
     lista.push(new Usuario('pgrillo@duocuc.cl', '1236', 'Pepe', 'Grillo',  '¿Cuál es tu animal favorito?', 'panqueques'));
     lista.push(new Usuario('rdoblas@duocuc.cl', '1235', 'Ruben', 'Doblas',  '¿Cuál es tu animal favorito?', 'moto' ));

@@ -30,7 +30,7 @@
       </ion-title>
       <div class="ion-padding-vertical">
 
-        <h2>Contraseña recuperada</h2>
+        <h2 *ngIf="usuario">¡Felicidades {{ usuario.nombre }}! <span><br></span> recuperaste tu contraseña</h2>
         <ion-img class="imagencorrecta" src="assets/image/correcto1.png"></ion-img>
         <br>
         <h1>Tu contraseña es:</h1>
