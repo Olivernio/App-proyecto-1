@@ -1,5 +1,4 @@
 <img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro">
-<!-- DIV que simula el body -->
 <div id="body">
   <!-- DIV que contiene las figuras del fondo -->
   <div class="contenedor-background">
@@ -19,10 +18,10 @@
     <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110;">
       <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <ion-card [ngClass]="{'card-error': error}" class="card">
+    <ion-card  [ngClass]="{'card-error': error}"  class="card" style="background-color: #152139;"> 
       <ion-title class="ion-padding-top ion-text-center">
         <h1 style="color: aliceblue; font-size: xx-large;">Sistema de Asistencia <br><span
-            style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
+          style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span></h1>
       </ion-title>
 
       <!-- Bloque del formulario -->
@@ -61,7 +60,7 @@
   <!-- FOOTER -->
   <ion-footer>
     <ion-toolbar color="white">
-      <ion-title class="ion-text-center ion-text">
+      <ion-title class="ion-text-center ion-text" style="color: azure;">
         Sistema de Asistencia DuocUC <br>
         &copy; 2023 DuocUC
       </ion-title>
