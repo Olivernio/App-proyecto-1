@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Navigation, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-pregunta',
@@ -13,24 +15,25 @@ export class PreguntaPage implements OnInit {
   public respuesta: string = '';
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {
+    private activatedRoute: ActivatedRoute,private router: Router,private alertController: AlertController) {
     this.activatedRoute.queryParams.subscribe(params => {
-      // Verificar si extras y state existen antes de acceder a sus propiedades
-      const state = this.router.getCurrentNavigation()?.extras.state;
-      if (state) {
-        // Verificar si usuario existe antes de acceder a sus propiedades
-        if (state['usuario']) {
-          this.usuario = state['usuario'];
+      const navigation: Navigation | null = this.router.getCurrentNavigation();
+      if (navigation) {
+        const state: any | undefined = navigation.extras.state;
+        if (state) {
+          if (state['usuario']) {
+            this.usuario = state['usuario'];
+          } else {
+            this.router.navigate(['/login']);
+          }
         } else {
           this.router.navigate(['/login']);
         }
-      } else {
-        this.router.navigate(['/login']);
       }
     });
   }
+
+  
 
   ngOnInit() {
   }
@@ -40,9 +43,27 @@ export class PreguntaPage implements OnInit {
   public PaginaValidarRespuestaSecreta(): void {
     // Verificar si usuario existe antes de acceder a sus propiedades
     if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-      alert('Tu respuesta es correcta, Su contraseña es: ' + this.usuario.password);
+      this.mostrarMensaje('Tu respuesta es correcta, Su contraseña es: ' + this.usuario.password);
     } else {
-      alert('Tu respuesta es incorrecta ');
+      this.mostrarMensaje('Tu respuesta es incorrecta,  ');
     }
   }
+
+
+   public async mostrarMensaje(mensaje: string) {
+    const alert = await this.alertController.create({
+      message: mensaje,
+      header:'Error!!!',
+      subHeader: 'Verifica tu respuesta',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  
 }
+
+
+
+
+
