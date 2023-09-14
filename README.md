@@ -8,7 +8,7 @@ Integrantes
  - Matías Salinas
  - Diedo Mella
  - Martín Mondaca
- - diego Silva
+ - Diego Silva
 
 Profesor:
  - Ceferino Sotelo
