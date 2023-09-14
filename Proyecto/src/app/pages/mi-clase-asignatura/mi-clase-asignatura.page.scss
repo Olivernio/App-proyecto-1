@@ -1,0 +1,33 @@
+@media (max-width: 700px) {
+    #container-logo-duocuc {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+  
+    #div-logo-duocuc {
+      position: relative;
+      width: 50%;
+      height: 60px;
+      background-color: #152139;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+  
+      #logo-duocuc {
+        width: 80%;
+        height: auto;
+      }
+    }
+    #div-logo-duocuc-700-min{
+      visibility: hidden;
+      position: absolute;
+    }
+    #logo-duocuc-700-min{
+      visibility: hidden;
+      position: absolute;
+    }
+  }

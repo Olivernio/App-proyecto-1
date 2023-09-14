@@ -121,8 +121,12 @@ export class HomePage implements AfterViewInit {
     this.seccion = objetoDatosQR.seccion;
     this.sede = objetoDatosQR.sede;
 
+    const usuario = new Usuario('', '', '', '', '', '');
+    const usuarioEncontrado = usuario.buscarUsuarioValidoCorreo(usuario.correo);
+
     const navigationExtras: NavigationExtras = {
-      state: {json: objetoDatosQR} // Puedes pasar datos adicionales al estado si es necesario
+      
+      state: {json: objetoDatosQR, usuario: usuarioEncontrado}
     };
     // Realiza la redirección
     this.router.navigate(["mi-clase-asignatura"], navigationExtras);
