@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'correcta',
     loadChildren: () => import('./pages/correcta/correcta.module').then( m => m.CorrectaPageModule)
   },
+  {
+    path: 'mi-clase-asignatura',
+    loadChildren: () => import('./pages/mi-clase-asignatura/mi-clase-asignatura.module').then( m => m.MiClaseAsignaturaPageModule)
+  },
 
 ];
 

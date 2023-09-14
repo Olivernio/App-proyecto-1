@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Navigation, Router } from '@angular/router';
+import { ActivatedRoute, Navigation, NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 import { AlertController, ToastController} from '@ionic/angular';
 
@@ -44,25 +44,22 @@ export class PreguntaPage implements OnInit {
 
   public PaginaValidarRespuestaSecreta(): void {
     if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-      this.mostrarMensajeCorrecto('Tu contraseña es: ' + this.usuario.password);
       this.router.navigate(['/correcta']); 
+      const nagigationExtras: NavigationExtras = {
+        state: {
+          usuario: this.usuario
+        }
+      };
+      
     } else if (this.usuario && this.respuesta === '' || this.usuario && this.respuesta === ' ') {
       this.mostrarMensajeTostada('Escriba la respuesta');
     } else {
-      this.mostrarMensajeIncorrecto('Tu respuesta es incorrecta, Verifica tu respuesta');
       this.router.navigate(['/incorrecta']); 
       ;
     }
   }
 
-  public async mostrarMensajeCorrecto(mensaje: string) {
-    const alert = await this.alertController.create({
-      message: mensaje,
-      header: 'Respuesta correcta',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
+  
 
   async mostrarMensajeTostada(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({
@@ -73,12 +70,4 @@ export class PreguntaPage implements OnInit {
     toast.present();
   }
 
-  public async mostrarMensajeIncorrecto(mensaje: string) {
-    const alert = await this.alertController.create({
-      header: 'Respuesta Incorrecta',
-      message: `La Respuesta ingresada no es valida.`,
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
 }

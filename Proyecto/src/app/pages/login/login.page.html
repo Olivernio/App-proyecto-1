@@ -48,8 +48,26 @@
           ¿Olvidaste de tu contraseña?
         </ion-label>
         <ion-label>
-          <ion-button (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
+          <ion-button id="btn-recuperar" (click)="ingresarcorreorecuperacion()" color="warning">Recuperar contraseña</ion-button>
         </ion-label>
+
+        <script>
+          // Obtener el botón por su ID
+          const botonDesvanecer = document.getElementById("btn-recuperar");
+      
+          // Agregar un manejador de clic al botón
+          botonDesvanecer.addEventListener("click", function() {
+            // Agregar la clase "fade-out" al body para aplicar el desvanecimiento
+            document.body.classList.add("fade-out");
+      
+            // Después de un tiempo, redirigir o realizar otra acción
+            setTimeout(function() {
+              // Aquí puedes redirigir a otra página o realizar alguna otra acción
+              // En este ejemplo, simplemente cambiaremos la ubicación a una página diferente
+              window.location.href = "otra_pagina.html";
+            }, 100); // 500 milisegundos (0.5 segundos) para que la animación de desvanecimiento se complete
+          });
+        </script>
 
       </ion-card>
 

@@ -115,3 +115,17 @@ img, ion-img {
   width: 90%;
   color: wheat;
 }
+
+
+#body{
+  /* Estilos para la página */
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-out {
+  /* Estilo inicial: página opaca */
+  opacity: 0;
+}
+
+
+

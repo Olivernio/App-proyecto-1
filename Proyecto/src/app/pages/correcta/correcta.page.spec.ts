@@ -4,6 +4,7 @@ import { CorrectaPage } from './correcta.page';
 describe('CorrectaPage', () => {
   let component: CorrectaPage;
   let fixture: ComponentFixture<CorrectaPage>;
+  // @ts-ignore
 
   beforeEach(async(() => {
     fixture = TestBed.createComponent(CorrectaPage);

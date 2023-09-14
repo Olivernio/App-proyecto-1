@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Asistencia } from "src/app/model/asistencia";
 import jsQR, { QRCode } from "jsqr";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-qr-reader",
@@ -20,8 +21,18 @@ export class QrReaderPage implements OnInit {
   public escaneando = false;
   public datosQR: String = "";
   
-  public constructor() {
-   
+  public bloqueInicio: string = '';
+  public bloqueTermino: string = '';
+  public dia: string='';
+  public horaInicio: string='';
+  public horaFin: string = '';
+  public idAsignatura: string = '';
+  public nombreAsignatura: string = '';
+  public nombreProfesor: string='';
+  public seccion: string = '';
+  public sede: string = '';
+
+  public constructor(private router: Router) {
   }
   
   ngOnInit() {}
@@ -73,8 +84,22 @@ export class QrReaderPage implements OnInit {
   public obtenerDatosQRAAAA(datosQR: string): void {
     this.datosQR = datosQR;
     const obtenerDatosQR = JSON.parse(datosQR);
+    this.bloqueInicio = obtenerDatosQR.bloqueInicio;
+    this.bloqueTermino =obtenerDatosQR.bloqueTermino;
+    this.dia = obtenerDatosQR.dia;
+    this.horaInicio=obtenerDatosQR.horaInicio;
+    this.horaFin = obtenerDatosQR.horaFin;
+    this.idAsignatura = obtenerDatosQR.idAsignatura;
+    this.nombreAsignatura = obtenerDatosQR.nombreAsignatura;
+    this.nombreProfesor = obtenerDatosQR.nombreProfesor;
+    this.seccion = obtenerDatosQR.seccion;
+    this.sede = obtenerDatosQR.sede;
   }
   public detenerEscaneoQR(): void {
-    this.escaneando = false;
+    this.escaneando = false;}
+
+  public cerrarSesion(): void{
+    this.router.navigate(['/login']);
   }
+
 }
