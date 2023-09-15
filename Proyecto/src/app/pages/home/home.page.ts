@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, AnimationController } from '@ionic/angular';
 import { ActivatedRoute, Navigation, NavigationExtras, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 import jsQR, { QRCode } from 'jsqr';
@@ -10,6 +10,8 @@ import jsQR, { QRCode } from 'jsqr';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements AfterViewInit {
+  
+  @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
 
   @ViewChild('video', { static: false })
   private video!: ElementRef;
@@ -22,7 +24,7 @@ export class HomePage implements AfterViewInit {
 
   public escaneando = false;
   public datosQR = '';
-  public loading!: HTMLIonLoadingElement;
+  // public loading!: HTMLIonLoadingElement;
 
   public usuario: Usuario | undefined;
 
@@ -41,10 +43,11 @@ export class HomePage implements AfterViewInit {
   public roleMessage = '';
 
   public constructor(
-    private loadingController: LoadingController,
+    // private loadingController: LoadingController,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    private animationController: AnimationController) {
       this.activatedRoute.queryParams.subscribe((params) => {
         const navigation: Navigation | null = this.router.getCurrentNavigation();
         if (navigation) {
@@ -61,8 +64,20 @@ export class HomePage implements AfterViewInit {
       });
     }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.limpiarDatos();
+    
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(0%)', 'translate(100%)')
+        .fromTo('opacity', 0.2, 1);
+
+      animation.play();
+    }
   }
 
   public limpiarDatos(): void {
@@ -78,8 +93,8 @@ export class HomePage implements AfterViewInit {
     });
     this.video.nativeElement.srcObject = mediaProvider;
     this.video.nativeElement.setAttribute('playsinline', 'true');
-    this.loading = await this.loadingController.create({});
-    await this.loading.present();
+    // this.loading = await this.loadingController.create({});
+    // await this.loading.present();
     this.video.nativeElement.play();
     requestAnimationFrame(this.verificarVideo.bind(this));
   }
@@ -139,10 +154,10 @@ export class HomePage implements AfterViewInit {
 
   async verificarVideo() {
     if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
-      if (this.loading) {
-        await this.loading.dismiss();
-        this.escaneando = true;
-      }
+      // if (this.loading) {
+      //   await this.loading.dismiss();
+      //   this.escaneando = true;
+      // }
       if (this.obtenerDatosQR()) {
         console.log(1);
       } else {
