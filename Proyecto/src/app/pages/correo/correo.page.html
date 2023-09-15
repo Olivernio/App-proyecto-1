@@ -1,0 +1,70 @@
+<!-- <img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro"> -->
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco" />
+<div id="body">
+  <!-- DIV que contiene las figuras del fondo -->
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo" />
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo" />
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo" />
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo" />
+  </div>
+
+  <div id="div-logo-duocuc-700-min">
+    <ion-img id="logo-duocuc-700-min" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+  </div>
+
+  <!-- Aquí empieza la card -->
+  <div id="container-card" style="align-content: center; align-items: center; z-index: 200">
+    <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+    </div>
+    <ion-card [ngClass]="{'card-error': error}" class="card" style="background-color: #152139">
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: xx-large">
+          Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+        </h1>
+      </ion-title>
+
+      <!-- Bloque del formulario -->
+      <ion-label style="text-align: center">
+        <p>Paso 1: escriba su correo</p>
+      </ion-label>
+
+      <div class="card-form">
+        <ion-card-title class="ion-text-center" color="light">Ingrese su correo</ion-card-title>
+        <form>
+          <ion-card-content id="card-form" class="ion-text-center">
+            <div id="div-input-correo">
+              <ion-input id="input-correo" type="text" label="Correo" [(ngModel)]="correo" name="correo"
+                labelPlacement="floating"></ion-input>
+            </div>
+            <ion-button class="botonpaginavalidarcorreo" (click)="ingresarPaginaValidarRespuestaSecreta()"
+              color="warning">Recuperar
+              Contraseña</ion-button>
+          </ion-card-content>
+        </form>
+      </div>
+      <!-- Fin del bloque del formulario -->
+    </ion-card>
+    <div>
+      <!-- Botón pra volver al Login -->
+      <div class="ion-text-center">
+        <ion-button (click)="volver() ">
+          <ion-icon slot="start" name="arrow-undo-circle-outline"></ion-icon> Volver
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  <!-- Fin de la card -->
+
+  <!-- FOOTER -->
+  <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+    <ion-title class="letrasfooter" >
+      Sistema de Asistencia <span
+      style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+      &copy; 2023 DuocUC
+    </ion-title>
+</ion-footer>
+</div>
+<!-- Fin del body simulado -->
