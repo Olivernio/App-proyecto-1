@@ -9,15 +9,18 @@
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
 
-  <!-- Aquí empieza la card -->
-  <div id="container-card" style="align-content: center; align-items: center; z-index: 200">
+  <!-- DIV que tiene el logo DuocUC -->
+  <div id="container-card" style="z-index: 200 ">
     <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
       <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <ion-card class="card" style="background-color: #152139">
-      <ion-title class="ion-padding-top ion-text-center">
+    
+    <!-- Aquí empieza la card -->
+    <ion-card  class="card ion-text-center" style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius:10%; border-bottom-left-radius:10%; ">
+      <ion-title  class="ion-padding-top ion-text-center">
         <h1 style="color: aliceblue; font-size: xx-large">
-          Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+          Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span>
+          <span style="color: #004aad">UC</span>
         </h1>
       </ion-title>
 
@@ -27,8 +30,8 @@
       </ion-label>
 
       <div class="card-form">
+        <!-- Fomulario del pregunta -->
         <ion-card-title *ngIf="usuario"  class="ion-text-center" color="light"> {{ usuario.preguntaSecreta }} </ion-card-title>
-
         <form>
           <ion-card-content id="card-form" class="ion-text-center">
             <div id="div-input-respuesta">
@@ -36,7 +39,7 @@
                 labelPlacement="floating"></ion-input>
             </div>
             <ion-button class="ion-padding-top " (click)="PaginaValidarRespuestaSecreta()"
-              color="success">Responder</ion-button>
+              color="warning">Responder</ion-button>
           </ion-card-content>
         </form>
       </div>
@@ -55,13 +58,12 @@
 
 
   <!-- FOOTER -->
-  <ion-footer>
-    <ion-toolbar color="dark">
-      <ion-title class="ion-text-center ion-text">
-        Sistema de Asistencia DuocUC <br>
-        &copy; 2023 DuocUC
-      </ion-title>
-    </ion-toolbar>
+  <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+    <ion-title class="letrasfooter" >
+      Sistema de Asistencia <span
+      style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+      &copy; 2023 DuocUC
+    </ion-title>
   </ion-footer>
 
 </div>

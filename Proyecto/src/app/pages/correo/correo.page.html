@@ -39,8 +39,8 @@
               <ion-input id="input-correo" type="text" label="Correo" [(ngModel)]="correo" name="correo"
                 labelPlacement="floating"></ion-input>
             </div>
-            <ion-button class="ion-padding-top" (click)="ingresarPaginaValidarRespuestaSecreta()"
-              color="success">Recuperar
+            <ion-button class="botonpaginavalidarcorreo" (click)="ingresarPaginaValidarRespuestaSecreta()"
+              color="warning">Recuperar
               Contraseña</ion-button>
           </ion-card-content>
         </form>
@@ -59,13 +59,12 @@
   <!-- Fin de la card -->
 
   <!-- FOOTER -->
-  <ion-footer>
-    <ion-toolbar color="dark">
-      <ion-title class="ion-text-center ion-text">
-        Sistema de Asistencia DuocUC <br />
-        &copy; 2023 DuocUC
-      </ion-title>
-    </ion-toolbar>
-  </ion-footer>
+  <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+    <ion-title class="letrasfooter" >
+      Sistema de Asistencia <span
+      style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+      &copy; 2023 DuocUC
+    </ion-title>
+</ion-footer>
 </div>
 <!-- Fin del body simulado -->

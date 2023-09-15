@@ -102,6 +102,10 @@ img, ion-img {
 }
 
 #card{
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius:10%;
+  border-bottom-left-radius:10%;
   box-shadow: #152139 0px 22px 70px 4px;
   z-index: 100;
 }
@@ -119,4 +123,10 @@ img, ion-img {
 #input-respuesta{
   width: 90%;
   color: rgb(255, 255, 255);
+}
+
+
+.letrasfooter{
+  color: white;
+  padding: 2%;
 }

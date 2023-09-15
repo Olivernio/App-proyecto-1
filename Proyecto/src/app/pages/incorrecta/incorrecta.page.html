@@ -21,7 +21,7 @@
     <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
       <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <ion-card class="card" style="background-color: #152139">
+    <ion-card class="card"  style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius:10%; border-bottom-left-radius:10%;" >
       <ion-title class="ion-padding-top ion-text-center">
         <h1 style="color: aliceblue; font-size: xx-large">
           Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
@@ -31,10 +31,10 @@
       <!-- Mensaje de la card -->
       <div class="ion-padding-vertical">
         <h2>¡Lo sentimos!</h2>
-        <p>No has podido responder la pregunta secreta <span *ngIf="usuario">{{ usuario.nombre }} </span> :(</p>
-        <ion-img class="imagencorrecta" src="assets/image/Incorrecto1.png"></ion-img>
+        <p>No has podido responder la pregunta secreta  :(</p>
+        <ion-img class="imagencorrecta" src="assets/image/troste.avif"></ion-img>
         <br>
-        <ion-button color="success" routerLink="/login">Iniciar Sesion</ion-button>
+        <ion-button color="warning" routerLink="/login">Iniciar Sesion</ion-button>
       </div>
     </ion-card>
   </div>
@@ -42,11 +42,9 @@
 </div>
 
 <!-- FOOTER -->
-<ion-footer>
-  <ion-toolbar color="dark">
-    <ion-title class="ion-text-center ion-text">
-      Sistema de Asistencia DuocUC <br>
-      &copy; 2023 DuocUC
-    </ion-title>
-  </ion-toolbar>
+<ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+  <ion-title class="letrasfooter">
+    Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+    &copy; 2023 DuocUC
+  </ion-title>
 </ion-footer>

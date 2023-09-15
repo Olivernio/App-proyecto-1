@@ -30,22 +30,4 @@ export class CorrectaPage implements OnInit {
   }
   ngOnInit() { }
 
-  // public PaginaValidarRespuestaSecreta(): void {
-  //   if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-  //     this.router.navigate(['/correcta']); 
-  //   } else if (this.usuario && this.respuesta === '' || this.usuario && this.respuesta === ' ') {
-  //     this.mostrarMensajeTostada('Escriba la respuesta');
-  //   } else {
-  //     this.router.navigate(['/incorrecta']); 
-  //     ;
-  //   }
-  // }
-//   async mostrarMensajeTostada(mensaje: string, duracion?: number) {
-//     const toast = await this.toastController.create({
-//       message: mensaje,
-//       duration: duracion ? duracion : 2000,
-//       icon: "alert"
-//     });
-//     toast.present();
-// }
 }

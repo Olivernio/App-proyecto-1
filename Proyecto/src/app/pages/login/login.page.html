@@ -9,7 +9,6 @@
     <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
     <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
     <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
-    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
     <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
   </div>
 
@@ -41,16 +40,16 @@
           <ion-input id="input-password" name="password" label="Contraseña" labelPlacement="floating" type="password"
             [(ngModel)]="usuario.password"></ion-input>
         </div>
-        <ion-button shape="block" (click)="ingresar()" color="success">Ingresar</ion-button>
+        <ion-button  class="botoningresarsesion" shape="block" (click)="ingresar()" color="warning">Ingresar</ion-button>
 
       </form>
 
       <!-- Botón para recuperar contraseña -->
-      <ion-label>
+      <ion-label >
         ¿Olvidaste de tu contraseña?
       </ion-label>
       <ion-label>
-        <ion-button id="btn-recuperar" (click)="ingresarcorreorecuperacion()" color="warning">Recuperar
+        <ion-button class="botonrecuperarcontraseña" id="btn-recuperar" (click)="ingresarcorreorecuperacion()" color="warning">Recuperar
           contraseña</ion-button>
       </ion-label>
 
@@ -61,14 +60,12 @@
 
 
   <!-- FOOTER -->
-  <ion-footer class="ion-text-center">
-    <ion-toolbar color="dark">
-      <ion-title>
-        Sistema de Asistencia DuocUC <br>
+  <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+      <ion-title class="letrasfooter" >
+        Sistema de Asistencia <span
+        style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
         &copy; 2023 DuocUC
       </ion-title>
-    </ion-toolbar>
   </ion-footer>
-
 </div>
 <!-- Fin del body simulado -->
