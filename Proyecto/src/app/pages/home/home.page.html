@@ -23,8 +23,8 @@
   </ion-header>
   <br>
 
-  <div id="container-card" style="align-content: center; align-items: center; z-index: 300; height: 700px;">
-    <ion-card class="card ion-text-center"  style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius:10%; border-bottom-left-radius:10%;">
+  <div id="container-card">
+    <ion-card class="card ion-text-center">
 
       <ion-title class="ion-padding-top ion-text-center">
         <h1 *ngIf="usuario" style="color: aliceblue; font-size: xx-large">
@@ -72,7 +72,7 @@
 </div>
 <ion-toolbar color="white">
   <ion-title class="ion-text-center ion-text">
-    <ion-button (click)="preguntaCerrarSesion()" color="warning">
+    <ion-button (click)="preguntaCerrarSesion()" color="warning" shape="round">
       <ion-icon slot="start" name="exit-outline"></ion-icon>
       Cerrar sesión</ion-button>
   </ion-title>

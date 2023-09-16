@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'; // , AfterViewInit
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core'; // , AfterViewInit
 import { Router, NavigationExtras } from '@angular/router';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, AnimationController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 
 
@@ -9,16 +9,31 @@ import { Usuario } from 'src/app/model/usuario';
   templateUrl: './correo.page.html',
   styleUrls: ['./correo.page.scss'],
 })
-export class CorreoPage implements OnInit {
+export class CorreoPage implements OnInit, AfterViewInit {
+
+  @ViewChild('body', { read: ElementRef }) body!: ElementRef;
 
   public usuario: Usuario | undefined;
   public error: boolean = false;
   public correo: string = '';
 
-  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController) {
+  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController, private animationController: AnimationController) {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
+
+    // const animation = this.animationController
+    //   .create()
+    //   .addElement(this.body.nativeElement)
+    //   .iterations(1)
+    //   .duration(500)
+    //   .fromTo('transform', 'translate(-100%)', 'translate(0)')
+    //   .fromTo('opacity', 0.3, 1);
+
+    // animation.play();
   }
 
   public ingresarPaginaValidarRespuestaSecreta(): void {
@@ -31,8 +46,8 @@ export class CorreoPage implements OnInit {
         }
       };
       this.router.navigate(['/pregunta'], navigationExtras);
-    // } else if (this.correo == '' || this.correo == ' ') {
-    //   this.mostrarMensajeTostada('Por favor, ingrese su correo institucional');
+      // } else if (this.correo == '' || this.correo == ' ') {
+      //   this.mostrarMensajeTostada('Por favor, ingrese su correo institucional');
     } else if (!this.correo.endsWith('@duocuc.cl')) {
       this.mostrarMensajeTostada('Por favor, ingrese su correo institucional (DuocUC)');
     } else if (!usuarioEncontrado) {

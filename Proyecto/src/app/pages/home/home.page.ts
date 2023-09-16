@@ -19,12 +19,9 @@ export class HomePage implements AfterViewInit {
   @ViewChild('canvas', { static: false })
   private canvas!: ElementRef;
 
-  @ViewChild('fileinput', { static: false })
-  private fileinput!: ElementRef;
-
   public escaneando = false;
   public datosQR = '';
-  // public loading!: HTMLIonLoadingElement;
+  public loading!: HTMLIonLoadingElement;
 
   public usuario: Usuario | undefined;
 
@@ -41,7 +38,7 @@ export class HomePage implements AfterViewInit {
 
 
   public constructor(
-    // private loadingController: LoadingController,
+    private loadingController: LoadingController,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private alertController: AlertController,
@@ -92,8 +89,8 @@ export class HomePage implements AfterViewInit {
     });
     this.video.nativeElement.srcObject = mediaProvider;
     this.video.nativeElement.setAttribute('playsinline', 'true');
-    // this.loading = await this.loadingController.create({});
-    // await this.loading.present();
+    this.loading = await this.loadingController.create({});
+    await this.loading.present();
     this.video.nativeElement.play();
     requestAnimationFrame(this.verificarVideo.bind(this));
   }
@@ -153,10 +150,10 @@ export class HomePage implements AfterViewInit {
 
   async verificarVideo() {
     if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
-      // if (this.loading) {
-      //   await this.loading.dismiss();
-      //   this.escaneando = true;
-      // }
+      if (this.loading) {
+        await this.loading.dismiss();
+        this.escaneando = true;
+      }
       if (this.obtenerDatosQR()) {
         console.log(1);
       } else {

@@ -13,7 +13,8 @@ ion-content {
 
   .header-image {
     background-color: #152139;
-    padding-left: 10px;
+    margin-top: 1%;
+    padding-left: 1%;
     width: 30%;
     margin-right: 10px;
     position: relative;
@@ -175,13 +176,22 @@ img, ion-img {
 .card {
   z-index: 100;
   transition: .5s;
+  background-color: #152139;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius:10%;
+  border-bottom-left-radius:10%;
 }
 #container-card{
+  align-content: center;
+  align-items: center;
+  z-index: 300;
+  height: 700px;
   width: 100%;
   max-height: 600px;
   transition: 0.5s;
+  
 }
-
 
 .footer {
   background-color: #152139;
