@@ -27,14 +27,14 @@ export class HomePage implements AfterViewInit {
 
   public bloqueInicio: number = 0;
   public bloqueTermino: number = 0;
-  public dia: string = '';
-  public horaFin: string = '';
-  public horaInicio: string = '';
-  public idAsignatura: string = '';
-  public nombreAsignatura: string = '';
-  public nombreProfesor: string = '';
-  public seccion: string = '';
-  public sede: string = '';
+  public dia: string = 'Sin datos';
+  public horaFin: string = 'Sin datos';
+  public horaInicio: string = 'Sin datos';
+  public idAsignatura: string = 'Sin datos';
+  public nombreAsignatura: string = 'Sin datos';
+  public nombreProfesor: string = 'Sin datos';
+  public seccion: string = 'Sin datos';
+  public sede: string = 'Sin datos';
 
 
   public constructor(
@@ -69,7 +69,7 @@ export class HomePage implements AfterViewInit {
         .iterations(Infinity)
         .duration(7000)
         .fromTo('transform', 'translate(-100%)', 'translate(110%)')
-        .fromTo('opacity', 1, 0.3);
+        .fromTo('opacity', 1, 0.6);
 
       animation.play();
     }

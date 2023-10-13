@@ -48,13 +48,8 @@ export class CorreoPage implements OnInit, AfterViewInit {
       this.router.navigate(['/pregunta'], navigationExtras);
       // } else if (this.correo == '' || this.correo == ' ') {
       //   this.mostrarMensajeTostada('Por favor, ingrese su correo institucional');
-    } else if (!this.correo.endsWith('@duocuc.cl')) {
-      this.mostrarMensajeTostada('Por favor, ingrese su correo institucional (DuocUC)');
-    } else if (!usuarioEncontrado) {
-      this.efectoError();
-      this.mostrarMensajeTostada('¡El correo no se encuentra en el sistema!');
-    } else {
-      this.mostrarMensajeTostada('Por favor, ingrese su correo institucional')
+    }else {
+      this.router.navigate(['/incorrecta']);
     }
   }
 

@@ -27,9 +27,6 @@ export class IncorrectaPage implements OnInit {
             }
           }
         }
-        if (!this.usuario) {
-          this.router.navigate(['/']);
-        }
       });
     }
 

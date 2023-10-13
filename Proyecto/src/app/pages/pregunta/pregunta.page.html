@@ -38,8 +38,8 @@
               <ion-input id="input-respuesta" type="text" label="Respuesta" [(ngModel)]="respuesta" name="respuesta"
                 labelPlacement="floating"></ion-input>
             </div>
-            <ion-button class="ion-padding-top " (click)="PaginaValidarRespuestaSecreta()"
-              color="warning">Responder</ion-button>
+            <ion-button (click)="PaginaValidarRespuestaSecreta()"
+              color="warning" shape="round">Responder</ion-button>
           </ion-card-content>
         </form>
       </div>
@@ -48,7 +48,7 @@
     <div>
       <!-- Botón pra volver al Login -->
       <div class="ion-text-center">
-        <ion-button (click)="volver() ">
+        <ion-button (click)="volver()" shape="round">
           <ion-icon slot="start" name="arrow-undo-circle-outline"></ion-icon> Volver
         </ion-button>
       </div>
