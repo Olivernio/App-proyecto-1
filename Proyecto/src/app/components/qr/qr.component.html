@@ -1,0 +1,33 @@
+<!-- <img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco"> -->
+<div id="body">
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo">
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo">
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo">
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo">
+  </div>
+
+  <br>
+
+  <div id="container-card">
+    <ion-card class="card ion-text-center">
+
+      <p>¡Escanea el código QR con tu cámara para confirmar tu asistencia!</p>
+      <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" shape="round">
+        <ion-icon slot="start" name="videocam-outline"></ion-icon>
+        Comenzar Escaneo de QR
+      </ion-button>
+
+      <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" shape="round">
+        <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+        Detener escaneo de QR
+      </ion-button>
+
+      <video #video [hidden]="!escaneando" width="100%"></video>
+      <canvas #canvas hidden></canvas>
+
+    </ion-card>
+  </div>
+
+</div>

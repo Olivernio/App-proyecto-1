@@ -1,0 +1,174 @@
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+}
+
+.header-content {
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: flex-start;
+
+  .header-image {
+    background-color: #152139;
+    margin-top: 1%;
+    padding-left: 1%;
+    width: 30%;
+    margin-right: 10px;
+    position: relative;
+    z-index: 10;
+    height: 50px;
+  }
+
+  .header-title {
+    flex-grow: 1;
+    z-index: 9;
+  }
+}
+
+ion-header.header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ajusta según sea necesario para que el encabezado esté sobre el contenido */
+}
+
+#body {
+  display: contents;
+  background-color: rgb(255, 255, 255);
+}
+
+.contenedor-background {
+  position: relative;
+}
+
+//Background figura #N°
+#bk-f-0 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+//Background figura #N°
+#bk-f-1 {
+  position: absolute;
+  width: 230px;
+  left: -30px;
+  z-index: 1;
+}
+#bk-f-2 {
+  position: absolute;
+  width: 230px;
+  right: -70px;
+  z-index: 2;
+}
+#bk-f-3 {
+  position: absolute;
+  width: 230px;
+  left: 150px;
+  top: 90px;
+  transform: rotate(-300deg);
+  z-index: 3;
+}
+#bk-f-4 {
+  position: absolute;
+  width: 230px;
+  left: -80px;
+  top: 90px;
+  transform: rotate(-250deg);
+  z-index: 4;
+}
+#bk-f-5 {
+  position: absolute;
+  width: 230px;
+  right: -100px;
+  top: 230px;
+  transform: rotate(15deg);
+  z-index: 5;
+}
+
+@media (min-width: 700px) {
+  #div-logo-duocuc-700-min {
+    top: 5%;
+    position: absolute;
+    left: 37%;
+    width: 30%;
+    height: 10%;
+    background-color: #002138;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #002138 0px 25px 20px -20px;
+    z-index: 300;
+  }
+  #logo-duocuc-700-min {
+    margin-left: 10%;
+    width: 80%;
+    z-index: 301;
+  }
+  #div-logo-duocuc {
+    position: absolute;
+    #logo-duocuc {
+      visibility: hidden;
+    }
+  }
+
+  .card {
+    top: 10%;
+    background-color: #152139;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    box-shadow: #152139 0px 22px 70px 4px;
+    transition: 0.5s;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 700px) {
+  #container-logo-duocuc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+
+  #div-logo-duocuc {
+    position: relative;
+    width: 50%;
+    height: 60px;
+    background-color: #152139;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    #logo-duocuc {
+      width: 80%;
+      height: auto;
+    }
+  }
+  #div-logo-duocuc-700-min {
+    visibility: hidden;
+    position: absolute;
+  }
+  #logo-duocuc-700-min {
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+img,
+ion-img {
+  pointer-events: none;
+}
+
+.header {
+  background-color: #152139;
+  transition: 0.5s;
+}
+
+#titulo {
+  color: antiquewhite;
+}

@@ -41,12 +41,6 @@ echo "******************************************\n\n"
 npm i @capacitor/geolocation
 
 echo "******************************************"
-echo "npm i @capacitor-community/barcode-scanner"
-echo "******************************************\n\n"
-
-npm i @capacitor-community/barcode-scanner
-
-echo "******************************************"
 echo "npm i @capacitor-community/sqlite --save"
 echo "******************************************\n\n"
 
@@ -65,9 +59,25 @@ echo "******************************************\n\n"
 npm i jsqr@latest --save
 
 echo "******************************************"
+echo "npm i jeep-sqlite --save"
+echo "******************************************\n\n"
+
+npm i jeep-sqlite --save
+
+echo "******************************************"
+echo "npm install --save sql.js"
+echo "******************************************\n\n"
+
+npm install --save sql.js
+
+echo "******************************************"
+echo "npm install @capacitor-mlkit/barcode-scanning"
+echo "******************************************\n\n"
+
+npm install @capacitor-mlkit/barcode-scanning
+
+echo "******************************************"
 echo "ng add @angular/material"
 echo "******************************************\n\n"
 
 ng add @angular/material
-
-

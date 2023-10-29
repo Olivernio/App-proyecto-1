@@ -1,87 +1,54 @@
-import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core'; // , AfterViewInit
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController, AlertController, AnimationController } from '@ionic/angular';
-import { Usuario } from 'src/app/model/usuario';
-
+import { Usuario } from 'src/app/model/Usuario';
+import { AuthService } from 'src/app/services/auth.service';
+import { DataBaseService } from 'src/app/services/data-base.service';
 
 @Component({
   selector: 'app-correo',
   templateUrl: './correo.page.html',
   styleUrls: ['./correo.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
-export class CorreoPage implements OnInit, AfterViewInit {
+export class CorreoPage implements OnInit {
 
   @ViewChild('body', { read: ElementRef }) body!: ElementRef;
 
   public usuario: Usuario | undefined;
   public error: boolean = false;
-  public correo: string = '';
+  public correo: string = 'd.gomez@duocuc.cl';
 
-  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController, private animationController: AnimationController) {
+  constructor(private dataBaseService: DataBaseService
+            , private authService: AuthService
+            , private router: Router) {
+    this.usuario = new Usuario();
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit(): void {
-
-    // const animation = this.animationController
-    //   .create()
-    //   .addElement(this.body.nativeElement)
-    //   .iterations(1)
-    //   .duration(500)
-    //   .fromTo('transform', 'translate(-100%)', 'translate(0)')
-    //   .fromTo('opacity', 0.3, 1);
-
-    // animation.play();
-  }
-
-  public ingresarPaginaValidarRespuestaSecreta(): void {
-    const usuario = new Usuario('', '', '', '', '', '');
-    const usuarioEncontrado = usuario.buscarUsuarioValidoCorreo(this.correo);
-    if (usuarioEncontrado) {
+  public async ingresarPaginaValidarRespuestaSecreta(): Promise<void> {
+    const usu = await this.dataBaseService.leerUsuario(this.correo);
+    if (usu) {
       const navigationExtras: NavigationExtras = {
         state: {
-          usuario: usuarioEncontrado
+          usuario: usu
         }
       };
-      this.router.navigate(['/pregunta'], navigationExtras);
-      // } else if (this.correo == '' || this.correo == ' ') {
-      //   this.mostrarMensajeTostada('Por favor, ingrese su correo institucional');
+      this.router.navigate(['pregunta'], navigationExtras);
     }else {
-      this.router.navigate(['/incorrecta']);
+      this.router.navigate(['incorrecto']);
     }
-  }
-
-  async mostrarMensajeTostada(mensaje: string, duracion?: number) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: duracion ? duracion : 2000,
-      icon: "alert"
-    });
-    toast.present();
-  }
-
-  public async mostrarMensajeIncorrecto(mensaje: string) {
-    const alert = await this.alertController.create({
-      header: 'Respuesta Incorrecta',
-      message: `Escriba algun correo valido o registrado en el sistema!!`,
-      buttons: ['OK'],
-    });
-    await alert.present();
   }
 
   // Botón de volver
   public volver(): void {
     this.router.navigate(['/']);
-  }
-
-  efectoError(): void {
-    this.error = true;
-
-    setTimeout(() => {
-      this.error = false;
-    }, 2000); // 3000 milisegundos = 3 segundos
   }
 
 }

@@ -4,7 +4,7 @@ import { PreguntaPage } from './pregunta.page';
 describe('PreguntaPage', () => {
   let component: PreguntaPage;
   let fixture: ComponentFixture<PreguntaPage>;
-  // @ts-ignore
+
   beforeEach(async(() => {
     fixture = TestBed.createComponent(PreguntaPage);
     component = fixture.componentInstance;

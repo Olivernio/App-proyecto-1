@@ -1,0 +1,72 @@
+<!-- <img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco"> -->
+
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-header class="header">
+      <div class="header-content">
+        <div class="header-image">
+          <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"
+            style="margin-top: 10px;"></ion-img>
+        </div>
+        <div class="header-title">
+          <ion-title id="titulo" #titulo color="light">
+            Sistema de Asistencia <br />Duoc
+          </ion-title>
+        </div>
+      </div>
+    </ion-header>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment value="qr" (ionChange)="cambiarComponente($event)">
+
+      <ion-segment-button value="qr">
+        <ion-label>QR</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="miclase">
+        <ion-label>Mi clase</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="foro">
+        <ion-label>Foro</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="misdatos">
+        <ion-label>Mis datos</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <app-qr [hidden]="componente_activa != 'qr'"></app-qr>
+
+  <app-miclase [hidden]="componente_activa != 'miclase'"></app-miclase>
+
+  <app-foro [hidden]="componente_activa != 'foro'"></app-foro>
+
+  <app-misdatos [hidden]="componente_activa != 'misdatos'"></app-misdatos>
+
+</ion-content>
+
+
+<ion-toolbar color="white">
+  <ion-title class="ion-text-center ion-text">
+    <ion-button (click)="preguntaCerrarSesion()" color="warning" shape="round">
+      <ion-icon slot="start" name="exit-outline"></ion-icon>
+      Cerrar sesión</ion-button>
+  </ion-title>
+</ion-toolbar>
+
+
+<ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+  <ion-title class="letrasfooter">
+    Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+    &copy; 2023 DuocUC
+  </ion-title>
+</ion-footer>
