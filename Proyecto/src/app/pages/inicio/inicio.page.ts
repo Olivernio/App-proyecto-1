@@ -64,7 +64,9 @@ export class InicioPage implements OnInit {
     this.componente_activa = event.detail.value;
   }
 
-  // --------------------------------------------- ALERTA CONDICIONAL. [OK] -> CERRAR SESIÓN ---------------------------------------------
+  /**
+   * ALERTA CONDICIONAL. [OK] -> CERRAR SESIÓN
+   */
   async preguntaCerrarSesion() {
     const alert = await this.alertController.create({
       header: '¿Quieres cerrar sesión?',
