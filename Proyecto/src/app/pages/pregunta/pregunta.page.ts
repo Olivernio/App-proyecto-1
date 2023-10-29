@@ -1,69 +1,61 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { Usuario } from 'src/app/model/Usuario';
-import { AlertController, ToastController } from '@ionic/angular';
+import { Router, NavigationExtras,RouterModule } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { Usuario } from 'src/app/model/usuario';
+import { Storage } from '@ionic/storage-angular';
+import { Subject } from 'rxjs';
+import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 @Component({
   selector: 'app-pregunta',
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,RouterModule]
 })
 export class PreguntaPage implements OnInit {
 
-  public usuario: Usuario | undefined;
-  public respuesta: string = '';
+  password = new Subject<string>();
+  usuario = new Usuario();
+  nombre = '';
+  preguntaSecreta = '';
+  respuesta = '';
+  correo = '';
 
-  constructor(private activatedRoute: ActivatedRoute
-            , private router: Router
-            , private alertController: AlertController
-            , private toastController: ToastController) {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation) {
-      const state = navigation.extras.state;
-      if (state && state['usuario']) {
-        this.usuario = state['usuario'];
+  constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
+
+  ngOnInit() {
+    // Suscríbete al BehaviorSubject para obtener el usuario cuando esté disponible
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      if (usuario) {
+        this.usuario = usuario;
+        this.nombre = usuario.nombre;
+        this.preguntaSecreta = usuario.preguntaSecreta;
+        this.correo = usuario.correo;
+        
       }
-    }
-  }
-
-  ngOnInit() {}
-
-  public PaginaValidarRespuestaSecreta(): void {
-    if (this.usuario && this.usuario.respuestaSecreta === this.respuesta) {
-
-      const navigationExtras: NavigationExtras = {
-        state: { usuario: this.usuario }
-      };
-      // Realiza la redirección
-      this.router.navigate(["correcto"], navigationExtras);
-
-    } else if (this.usuario && this.respuesta === '' || this.usuario && this.respuesta === ' ') {
-      this.mostrarMensajeTostada('Escriba la respuesta');
-    } else {
-        const navigationExtras: NavigationExtras = {
-          state: { usuario: this.usuario }
-        };
-        // Realiza la redirección
-        this.router.navigate(["incorrecto"], navigationExtras);
-    }
-  }
-
-  async mostrarMensajeTostada(mensaje: string, duracion?: number) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: duracion ? duracion : 2000,
-      icon: "alert"
     });
-    toast.present();
   }
 
-  public volver(): void {
-    this.router.navigate(['/']);
+  recuperarContrasena(){
+    if (this.respuesta==this.usuario.respuestaSecreta){
+      this.router.navigate(['/correcto']);
+      this.authService.transmitirPasswordAndNombre(this.usuario.password, this.usuario.nombre);
+    }else{
+      this.router.navigate(['/incorrecto']);
+    }
+  }
+
+  /**
+   * Redirección a la página de /ingreso.
+   */
+  volver() {
+    this.router.navigate(['/ingreso']);
   }
 
 }

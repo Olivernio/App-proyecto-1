@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, AlertController, ToastController } from '@ionic/angular';
-import { PreguntaPage } from '../pregunta/pregunta.page';
-import { ActivatedRoute, Navigation, Router } from '@angular/router';
-import { Usuario } from 'src/app/model/Usuario';
+import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-incorrecto',
   templateUrl: './incorrecto.page.html',
@@ -19,7 +20,10 @@ export class IncorrectoPage implements OnInit {
   ngOnInit() {
   }
 
-  public volver(): void {
-    this.router.navigate(['/']);
+  /**
+   * Redirección a la página de /ingreso.
+   */
+  volver() {
+    this.router.navigate(['/ingreso']);
   }
 }

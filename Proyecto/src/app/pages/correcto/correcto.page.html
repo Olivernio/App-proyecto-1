@@ -16,12 +16,13 @@
 
   <!-- Aquí empieza la card -->
   <div id="container-card" class="ion-text-center ion-padding-vertical"
-    style="align-content: center; align-items: center; z-index: 200;" style="background-color: #152139" >
+    style="align-content: center; align-items: center; z-index: 200;" style="background-color: #152139">
     <!-- Logo de DuocUC (pantalla pequeña) -->
     <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
       <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
     </div>
-    <ion-card class="card" style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius:10%; border-bottom-left-radius:10%;"  >
+    <ion-card class="card"
+      style="background-color: #152139; border-top-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius:10%; border-bottom-left-radius:10%;">
       <ion-title class="ion-padding-top ion-text-center">
         <h1 style="color: aliceblue; font-size: xx-large">
           Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
@@ -30,14 +31,15 @@
 
 
       <!-- Mensaje de la card -->
-      <div >
-        <h2 *ngIf="usuario">¡Felicidades {{ usuario.nombre }}! <span><br></span> recuperaste tu contraseña</h2>
+      <div>
+        <h2>¡Felicidades {{ nombre }}! <span><br></span> recuperaste tu contraseña</h2>
         <ion-img class="imagencorrecta" src="assets/image/pulgararriba.jpg"></ion-img>
         <br>
-        <div *ngIf="usuario">
-        <h1 class="titulocontraseña" style="color: white;">Tu contraseña es: {{ usuario.password }}</h1>
+        <div>
+          <h1 class="titulocontraseña" style="color: white;">Tu contraseña es: {{ password }}</h1>
         </div>
-        <ion-button (click)="volver()" color="warning" style="padding-bottom: 2%;" shape="round">Iniciar Sesion</ion-button>
+        <ion-button (click)="volver()" color="warning" style="padding-bottom: 2%;" shape="round">Iniciar
+          Sesion</ion-button>
       </div>
     </ion-card>
   </div>

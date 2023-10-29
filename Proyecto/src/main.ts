@@ -16,6 +16,8 @@ import { DataBaseService } from './app/services/data-base.service';
 import { InitializeAppService } from './app/services/initialize.app.service';
 import { AuthService } from './app/services/auth.service';
 import { Storage } from '@ionic/storage-angular';
+import { APIClientService } from './app/services/apiclient.service';
+import { HttpClientModule } from '@angular/common/http';
 // CGV-FIN-1
 
 if (environment.production) {
@@ -56,20 +58,19 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     // CGV-INI-3: En esta sección se agregan los servicios que hemos implementado.
     importProvidersFrom(IonicModule.forRoot({ innerHTMLTemplatesEnabled: true })),
+    importProvidersFrom(HttpClientModule),
     InitializeAppService,
     SQLiteService,
     DataBaseService,
     AuthService,
     Storage,
+    APIClientService,
     {
-        provide: APP_INITIALIZER,
-        useFactory: initializeFactory,
-        deps: [InitializeAppService],
-        multi: true
+      provide: APP_INITIALIZER,
+      useFactory: initializeFactory,
+      deps: [InitializeAppService],
+      multi: true
     }
     // CGV-FIN-3
-    ,
-    provideAnimations(),
-    provideAnimations()
-],
+  ],
 });

@@ -7,13 +7,6 @@ echo.
 echo.
 
 echo ******************************************
-echo ng add @angular/material
-echo ******************************************
-call ng add @angular/material
-echo.
-echo.
-
-echo ******************************************
 echo npm i typescript@5.0.4
 echo ******************************************
 call npm i typescript@5.0.4
@@ -94,5 +87,12 @@ echo ******************************************
 echo npm install @capacitor-mlkit/barcode-scanning
 echo ******************************************
 call npm install @capacitor-mlkit/barcode-scanning
+echo.
+echo.
+
+echo ******************************************
+echo ng add @angular/material
+echo ******************************************
+call ng add @angular/material
 echo.
 echo.

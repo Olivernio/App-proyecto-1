@@ -1,43 +1,41 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, AlertController, ToastController } from '@ionic/angular';
-import { PreguntaPage } from '../pregunta/pregunta.page';
-import { ActivatedRoute, Navigation, Router } from '@angular/router';
-import { Usuario } from 'src/app/model/Usuario';
+import { NavigationExtras, Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-correcto',
-  templateUrl: './correcto.page.html',
-  styleUrls: ['./correcto.page.scss'],
+  templateUrl: 'correcto.page.html',
+  styleUrls: ['correcto.page.scss'],
+  imports: [IonicModule, CommonModule, FormsModule],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CorrectoPage implements OnInit {
-  public usuario: Usuario | undefined;
-  
-  constructor(private activatedRoute: ActivatedRoute, private router: Router)
-  {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      const navigation: Navigation | null = this.router.getCurrentNavigation();
-      if (navigation) {
-        const state: any | undefined = navigation.extras.state;
-        if (state) {
-          if (state['usuario']) {
-            this.usuario = state['usuario'];
-          }
-        }
-      }
-      if (!this.usuario) {
-        this.router.navigate(['/']);
-      }
+
+  nombre: string = '';
+  password: string = '';
+
+  constructor(private router: Router
+            , private authService: AuthService) { }
+
+
+  ngOnInit() {
+    this.authService.password.subscribe(contraseña => {
+      this.password = contraseña;
+    });
+    this.authService.nombre.subscribe(nombre => {
+      this.nombre = nombre;
     });
   }
 
-  ngOnInit() {}
-
-  volver(): void{
-    this.router.navigate(['/']);
+  /**
+   * Redirección a la página de /ingreso.
+   */
+  volver() {
+    this.router.navigate(['/ingreso']);
   }
-
 }

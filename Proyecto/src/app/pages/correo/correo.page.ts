@@ -1,54 +1,44 @@
-import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { Router, NavigationExtras } from '@angular/router';
-import { ToastController, AlertController, AnimationController } from '@ionic/angular';
-import { Usuario } from 'src/app/model/Usuario';
+import { AlertController, IonicModule } from '@ionic/angular';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { DataBaseService } from 'src/app/services/data-base.service';
 
 @Component({
   selector: 'app-correo',
   templateUrl: './correo.page.html',
   styleUrls: ['./correo.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
 export class CorreoPage implements OnInit {
 
-  @ViewChild('body', { read: ElementRef }) body!: ElementRef;
+  // Variables
+  correo = '';
 
-  public usuario: Usuario | undefined;
-  public error: boolean = false;
-  public correo: string = 'd.gomez@duocuc.cl';
-
-  constructor(private dataBaseService: DataBaseService
-            , private authService: AuthService
-            , private router: Router) {
-    this.usuario = new Usuario();
-  }
+  constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  public async ingresarPaginaValidarRespuestaSecreta(): Promise<void> {
-    const usu = await this.dataBaseService.leerUsuario(this.correo);
-    if (usu) {
-      const navigationExtras: NavigationExtras = {
-        state: {
-          usuario: usu
-        }
-      };
-      this.router.navigate(['pregunta'], navigationExtras);
-    }else {
-      this.router.navigate(['incorrecto']);
+  /**
+   * Valida el correo al Services y si el correo es válido, le redirecciona a la página /correo.
+   */
+  async recuperarContrasena() {
+    const correoValido = await this.authService.verificacionCorreo(this.correo);
+    if (correoValido) {
+      this.router.navigate(['/pregunta']);
     }
   }
 
-  // Botón de volver
-  public volver(): void {
-    this.router.navigate(['/']);
+  /**
+   * Redirección a la página de /ingreso.
+   */
+  volver() {
+    this.router.navigate(['/ingreso']);
   }
 
+
 }
+

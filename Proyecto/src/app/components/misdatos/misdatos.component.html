@@ -1,3 +1,44 @@
-<p>
-  misdatos works!
-</p>
+<ion-card color="dark">
+
+  <ion-card-header class="welcome" #welcome>
+    <ion-card-title>Bienvenido/a<br>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-item class="item-nombre">
+    <ion-input type="text" [(ngModel)]="usuario.nombre" label="Nombres" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="usuario.apellido" label="Apellidos" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating"
+      [disabled]="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="usuario.preguntaSecreta" label="Pregunta secreta"
+      labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="usuario.respuestaSecreta" label="Respuesta secreta"
+      labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" [(ngModel)]="repeticionPassword" label="Repetir contraseña"
+      labelPlacement="floating"></ion-input>
+  </ion-item>
+
+  <div>
+    <ion-button (click)="presentAlertConfirm()" shape="round">
+      Actualizar mis datos
+    </ion-button>
+  </div>
+</ion-card>

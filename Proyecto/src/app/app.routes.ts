@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guards/auth-guard.service';
 import { loginGuard } from './guards/login-guard.service';
+import { authGuard } from './guards/auth-guard.service';
 
 export const routes: Routes = [
   {
@@ -11,12 +11,12 @@ export const routes: Routes = [
   {
     path: 'ingreso',
     loadComponent: () => import('./pages/ingreso/ingreso.page').then( m => m.IngresoPage),
-    canActivate: [authGuard]
+    canActivate: [loginGuard]
   },
   {
     path: 'inicio',
     loadComponent: () => import('./pages/inicio/inicio.page').then( m => m.InicioPage),
-    canActivate: [loginGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'correo',
@@ -33,5 +33,5 @@ export const routes: Routes = [
   {
     path: 'incorrecto',
     loadComponent: () => import('./pages/incorrecto/incorrecto.page').then( m => m.IncorrectoPage)
-  },
+  }
 ];

@@ -1,9 +1,9 @@
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { Injectable} from '@angular/core';
 import { SQLiteService } from './sqlite.service';
-import { Usuario } from '../model/Usuario';
+import { Usuario } from '../model/usuario';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { showAlert, showAlertDUOC, showAlertError } from '../model/Message';
+import { showAlert, showAlertDUOC, showAlertError } from '../tools/message-routines';
 
 @Injectable()
 export class DataBaseService {
@@ -12,7 +12,6 @@ export class DataBaseService {
     {
       toVersion: 1,
       statements: [`
-      DROP TABLE USUARIO;
       CREATE TABLE IF NOT EXISTS USUARIO (
         correo TEXT PRIMARY KEY NOT NULL,
         password TEXT NOT NULL,
@@ -30,6 +29,7 @@ export class DataBaseService {
   db!: SQLiteDBConnection;
   listaUsuarios: BehaviorSubject<Usuario[]> = new BehaviorSubject<Usuario[]>([]);
   listaUsuariosFueActualizada: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  datosQR: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(private sqliteService: SQLiteService) { }
 
@@ -49,18 +49,13 @@ export class DataBaseService {
   }
 
   async crearUsuariosDePrueba() {
-    const usu = new Usuario();
-    usu.setUsuario('d.gomez@duocuc.cl', '1234', 'Diego', 'Gomez', '¿Cuál es tu VideoJuego favorito?', 'albion', 'N', false);
-    await this.guardarUsuario(usu);
-    
-    usu.setUsuario('jgonzales@duocuc.cl', '1235', 'Juan', 'Gonzales', '¿Cuál es tu animal favorito?', 'gato', 'N', false);
-    await this.guardarUsuario(usu);
-    
-    usu.setUsuario('pgrillo@duocuc.cl', '1236', 'Pepe', 'Grillo',  '¿Cuál es tu comida favorito?', 'panqueques', 'N', false);
-    await this.guardarUsuario(usu);
-    
-    usu.setUsuario('rdoblas@duocuc.cl', '1235', 'Ruben', 'Doblas',  '¿Cuál es tu anime favorito?', 'boku no hero', 'N', false);
-    await this.guardarUsuario(usu);
+ 
+ 
+    await this.guardarUsuario(Usuario.getUsuario('admin', '1234', 'admin', '', 'hola', 'chao', 'N'));
+ 
+    await this.guardarUsuario(Usuario.getUsuario('atorres@duocuc.cl', '1234', 'Ana', 'Torres', 'Nombre de mi mascota', 'gato', 'N'));
+    await this.guardarUsuario(Usuario.getUsuario('avalenzuela@duocuc.cl', 'qwer', 'Alberto', 'Valenzuela', 'Mi mejor amigo', 'juanito', 'N'));
+    await this.guardarUsuario(Usuario.getUsuario('cfuentes@duocuc.cl', 'asdf', 'Carla', 'Fuentes', 'Dónde nació mamá', 'valparaiso', 'N'));
   }
 
   // Create y Update del CRUD. La creación y actualización de un usuario
@@ -109,6 +104,17 @@ export class DataBaseService {
     return usuarios[0];
   }
 
+ 
+ 
+// Validar correo
+async validarCorreo(correo: string): Promise<Usuario | undefined> {
+  const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+  return usuarios[0];
+}
+
+  
+
+ 
   // Actualizar sesión activa
   async actualizarSesionActiva(correo: string, sesionActiva: string) {
     const sql = 'UPDATE USUARIO SET sesionActiva=? WHERE correo=?';

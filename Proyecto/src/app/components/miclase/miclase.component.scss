@@ -1,0 +1,13 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Ajusta la cantidad de espacio vertical entre las filas */
+  border: 1px solid;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(206, 206, 206);
+}
+
+td {
+  width: 50%;
+}

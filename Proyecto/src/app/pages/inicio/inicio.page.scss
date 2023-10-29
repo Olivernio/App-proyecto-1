@@ -172,3 +172,16 @@ ion-img {
 #titulo {
   color: antiquewhite;
 }
+
+.card_componente {
+  z-index: 50;
+  height: 100%;
+}
+
+.btnComponente {
+  font-size: small;
+}
+
+ion-segment-button {
+  top: -10%;
+}

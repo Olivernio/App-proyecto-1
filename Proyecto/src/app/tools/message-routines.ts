@@ -1,5 +1,5 @@
 import { AlertController, ToastController } from "@ionic/angular";
-import { MessageEnum } from "./MessageEnum";
+import { MessageEnum } from "./message-enum";
 
 export let showLogs: boolean = true;
 

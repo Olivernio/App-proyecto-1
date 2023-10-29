@@ -1,3 +1,46 @@
-<p>
-  foro works!
-</p>
+<ion-content [fullscreen]="true" color="dark" class="fullscreen">
+
+  <ion-label class="ion-text-center">
+    <h1>¡ForoTODAY!</h1>
+  </ion-label>
+
+  <div class="div-btnPublicar">
+    <ion-button class="bntPublicar item" (click)="mostrarAlerta()" shape="round">Hacer una Publicación</ion-button>
+  </div>
+
+  <div class="lblPub">Publicaciones recientes</div>
+
+  <ion-card class="custom-card" *ngFor="let pub of publicaciones">
+    <div class="head-card">
+      <div class="author-info">
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        {{ pub.nombre }} {{ pub.apellido }} <span *ngIf="esAutor(pub)"> / Tú</span>
+      </div>
+      <div class="card-id">#{{ pub.id }}</div>
+      <div class="card-title">
+        {{ pub.titulo }}
+      </div>
+    </div>
+    <ion-card-content>
+
+      <div class="card-content">
+        {{ pub.contenido }}
+      </div>
+
+    </ion-card-content>
+    <div class="card-op">
+      <!-- Botón de Eliminación -->
+      <ion-button (click)="eliminarPublicacion(pub)" *ngIf="esAutor(pub)" color="danger">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>
+
+<ion-toast [isOpen]="isToastOpen" [duration]="5000" message="¡Publicación eliminada!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpen(false)"></ion-toast>
+
+<ion-toast [isOpen]="isToastOpen" [duration]="5000" message="¡Publicación creada!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpen(false)"></ion-toast>

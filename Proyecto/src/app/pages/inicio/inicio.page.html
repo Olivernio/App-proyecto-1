@@ -1,5 +1,3 @@
-<!-- <img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco"> -->
-
 <ion-header [translucent]="true">
 
   <ion-toolbar>
@@ -11,47 +9,41 @@
         </div>
         <div class="header-title">
           <ion-title id="titulo" #titulo color="light">
-            Sistema de Asistencia <br />Duoc
+            Sistema de Asistencia <br />DuocUC
           </ion-title>
         </div>
       </div>
     </ion-header>
   </ion-toolbar>
-
-  <ion-toolbar>
-    <ion-segment value="qr" (ionChange)="cambiarComponente($event)">
-
-      <ion-segment-button value="qr">
-        <ion-label>QR</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button value="miclase">
-        <ion-label>Mi clase</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button value="foro">
-        <ion-label>Foro</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button value="misdatos">
-        <ion-label>Mis datos</ion-label>
-      </ion-segment-button>
-
-    </ion-segment>
-  </ion-toolbar>
-
 </ion-header>
 
-<ion-content>
+<ion-content scroll-y="false" color="dark">
+  <ion-card class="card_componente" color="dark">
 
-  <app-qr [hidden]="componente_activa != 'qr'"></app-qr>
+    <ion-card-content>
+      <ion-toolbar class="container-componente">
+        <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
+          <ion-segment-button class="btnComponente" value="qr">
+            <ion-label>QR</ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="btnComponente" value="miclase">
+            <ion-label>Mi clase</ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="btnComponente" value="foro">
+            <ion-label>Foro</ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="btnComponente" value="misdatos">
+            <ion-label>Mis datos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
 
-  <app-miclase [hidden]="componente_activa != 'miclase'"></app-miclase>
-
-  <app-foro [hidden]="componente_activa != 'foro'"></app-foro>
-
-  <app-misdatos [hidden]="componente_activa != 'misdatos'"></app-misdatos>
-
+      <app-qr [hidden]="componente_actual !== 'qr'" (qrCapturado)="cambiarComponente('miclase')"></app-qr>
+      <app-miclase [hidden]="componente_actual !== 'miclase'"></app-miclase>
+      <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
+      <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 
@@ -62,8 +54,6 @@
       Cerrar sesión</ion-button>
   </ion-title>
 </ion-toolbar>
-
-
 <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
   <ion-title class="letrasfooter">
     Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
