@@ -30,8 +30,7 @@ export class ForoComponent implements OnInit {
         {
           name: 'titulo',
           type: 'text',
-          placeholder: 'Título',
-          value: 'Hola.'
+          placeholder: 'Título'
         },
         {
           name: 'contenido',
@@ -254,16 +253,10 @@ export class ForoComponent implements OnInit {
 
   actualizarPublicacion(pub: any) {
     this.api.actualizarPublicacion(pub).subscribe({
-      next: (publicacion) => this.setOpenEditada(true),
+      next: (publicacion) => this.limpiarPublicacion(),
       error: (error) => showAlertError('No fue posible actualizar la publicación.', error)
     });
-  }  
-
-
-  mensajePublicacion(accion: string, id: Publicacion) {
-    showAlertDUOC(`La publicación ${id} fue ${accion} correctamente`);
-    this.limpiarPublicacion();
+    this.setOpenEditada(true);
   }
-
-
+  
 }

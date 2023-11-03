@@ -46,6 +46,7 @@ export class AuthService {
             this.bd.actualizarSesionActiva(correo, 'S');
             this.storage.set(this.keyUsuario, usuario);
             this.usuarioAutenticado.next(usuario);
+            this.router.navigate(['inicio']);
           } else if (correo.trim() == "" && password.trim() == "") {
             showToast(`Escriba sus credenciales`);
           } else if (correo.length > 1 && !correo.endsWith("@duocuc.cl")) {
