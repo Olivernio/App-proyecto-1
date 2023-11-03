@@ -17,10 +17,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content scroll-y="false" color="dark">
-  <ion-card class="card_componente" color="dark">
+<ion-content scroll-y="false" color="light">
+  <ion-card class="card_componente" color="light">
 
-    <ion-card-content>
+    <ion-card-content class="componente-body">
       <ion-toolbar class="container-componente">
         <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
           <ion-segment-button class="btnComponente" value="qr">
@@ -56,7 +56,7 @@
 </ion-toolbar>
 <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
   <ion-title class="letrasfooter">
-    Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
-    &copy; 2023 DuocUC
+    Sistema de Asistencia<br>
+    &copy; 2023 <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span>
   </ion-title>
 </ion-footer>

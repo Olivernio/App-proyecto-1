@@ -10,6 +10,7 @@ import { showAlertDUOC, showAlertError } from 'src/app/tools/message-routines';
 import { AlertController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-foro',
   templateUrl: './foro.component.html',
@@ -29,7 +30,8 @@ export class ForoComponent implements OnInit {
         {
           name: 'titulo',
           type: 'text',
-          placeholder: 'Título'
+          placeholder: 'Título',
+          value: 'Hola.'
         },
         {
           name: 'contenido',
@@ -147,7 +149,7 @@ export class ForoComponent implements OnInit {
       next: (publicacion) => this.limpiarPublicacion(),
       error: (error) => showAlertError('No fue posible crear la publicación.', error)
     });
-    this.setOpen(true);
+    this.setOpenCreada(true);
   }
 
   public toastButtons = [
@@ -156,10 +158,17 @@ export class ForoComponent implements OnInit {
       role: 'cancel',
     },
   ];
-  isToastOpen = false;
-  setOpen(isOpen: boolean) {
-    this.isToastOpen = isOpen;
+
+  isToastOpenCreada = false;
+  setOpenCreada(isOpenCreada: boolean) {
+    this.isToastOpenCreada = isOpenCreada;
   }
+
+  isToastOpenEliminada = false;
+  setOpenEliminada(isOpenEliminada: boolean) {
+    this.isToastOpenEliminada = isOpenEliminada;
+  }
+
   /**
    * Función para eliminar la publicación con opciones: [Cancelar] y [OK] -> Eliminar publicación.
    * @param pub 
@@ -167,7 +176,7 @@ export class ForoComponent implements OnInit {
   public async eliminarPublicacion(pub: any) {
 
     const alert = await this.alertController.create({
-      header: '¿Quieres cerrar sesión?',
+      header: '¿Quieres eliminar la Publicacion?',
       buttons: [
         {
           text: 'Cancelar',
@@ -185,7 +194,7 @@ export class ForoComponent implements OnInit {
               next: (publicacion) => this.limpiarPublicacion(),
               error: (error) => showAlertError('No fue posible eliminar la publicación.', error)
             });
-            this.setOpen(true);
+            this.setOpenEliminada(true);
           },
         },
       ],

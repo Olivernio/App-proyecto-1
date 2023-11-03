@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" color="dark" class="fullscreen">
+<ion-content [fullscreen]="true" color="light" class="fullscreen">
 
   <ion-label class="ion-text-center">
     <h1>¡ForoTODAY!</h1>
@@ -39,8 +39,8 @@
   </ion-card>
 </ion-content>
 
-<ion-toast [isOpen]="isToastOpen" [duration]="5000" message="¡Publicación eliminada!" class="custom-toast"
-  [buttons]="toastButtons" (didDismiss)="setOpen(false)"></ion-toast>
+<ion-toast [isOpen]="isToastOpenEliminada" [duration]="5000" message="¡Publicación eliminada!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpenEliminada(false)"></ion-toast>
 
-<ion-toast [isOpen]="isToastOpen" [duration]="5000" message="¡Publicación creada!" class="custom-toast"
-  [buttons]="toastButtons" (didDismiss)="setOpen(false)"></ion-toast>
+<ion-toast [isOpen]="isToastOpenCreada" [duration]="5000" message="¡Publicación creada!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpenCreada(false)"></ion-toast>
