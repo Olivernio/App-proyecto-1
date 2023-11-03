@@ -1,53 +1,61 @@
-<ion-card-title>Datos de la Clase</ion-card-title>
-<table class="tabla">
-  <tr>
-    <td class="borde-celda">Bloque de inicio: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.bloqueInicio }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Bloque de término: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.bloqueTermino }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Día: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.dia }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Hora de inicio: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.horaInicio }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Hora de término: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.horaFin }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Sigla de asignatura: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.idAsignatura }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Nombre de asignatura: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.nombreAsignatura }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Nombre del profesor: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.nombreProfesor }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Sección: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.seccion }}</td>
-  </tr>
-  <tr>
-    <td class="borde-celda">Sede: </td>
-    <br>
-    <td class="borde-celda">{{ asistencia.sede }}</td>
-  </tr>
-</table>
+<div class="container">
+  <br><br>
+  <ion-card-title class="titulo">Datos de la Clase</ion-card-title>
+  <br>
+  <table class="tabla">
+    <tr>
+      <td class="celda-titulo">Bloque de inicio: </td>
+      <td class="celda-dato">{{ asistencia.bloqueInicio }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Bloque de término: </td>
+      <td class="celda-dato">{{ asistencia.bloqueTermino }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Día: </td>
+      <td class="celda-dato">{{ asistencia.dia }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Hora de inicio: </td>
+      <td class="celda-dato">{{ asistencia.horaInicio }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Hora de término: </td>
+      <td class="celda-dato">{{ asistencia.horaFin }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Sigla de asignatura: </td>
+      <td class="celda-dato">{{ asistencia.idAsignatura }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Nombre de asignatura: </td>
+      <td class="celda-dato">{{ asistencia.nombreAsignatura }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Nombre del profesor: </td>
+      <td class="celda-dato">{{ asistencia.nombreProfesor }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Sección: </td>
+      <td class="celda-dato">{{ asistencia.seccion }}</td>
+    </tr>
+    <tr>
+      <td class="celda-titulo">Sede: </td>
+      <td class="celda-dato">{{ asistencia.sede }}</td>
+    </tr>
+  </table>
+</div>
+<!-- 
+<ion-card class="presente" color="success" *ngIf="estaAusente">
+  <ion-card-title class="ion-text-center">¡Estás presente!</ion-card-title>
+</ion-card>
+
+<ion-card class="ausente" color="danger" *ngIf="!estaAusente">
+  <ion-card-header>
+    <ion-card-title class="ion-text-center">¡Aún estás ausente!</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="ion-text-center">
+    Escanea el código QR, dado por el docente, para estar presente
+  </ion-card-content>
+</ion-card> -->

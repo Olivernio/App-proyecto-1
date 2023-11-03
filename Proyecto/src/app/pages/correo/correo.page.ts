@@ -30,6 +30,13 @@ export class CorreoPage implements OnInit {
     if (correoValido) {
       this.router.navigate(['/pregunta']);
     }
+    else if (this.correo == '' || this.correo == ' ') {
+      //
+    }
+    else {
+      this.correo = '';
+      this.router.navigate(['/incorrecto']);
+    }
   }
 
   /**

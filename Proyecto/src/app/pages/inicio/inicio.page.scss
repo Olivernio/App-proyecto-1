@@ -43,14 +43,13 @@ ion-header.header {
   position: relative;
 }
 
-//Background figura #N°
+// Background figura #N°
 #bk-f-0 {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 0;
 }
-//Background figura #N°
 #bk-f-1 {
   position: absolute;
   width: 230px;
@@ -86,6 +85,36 @@ ion-header.header {
   top: 230px;
   transform: rotate(15deg);
   z-index: 5;
+}
+#bk-f-6 {
+  position: absolute;
+  width: 230px;
+  right: 30px;
+  top: 800px;
+  z-index: 6;
+}
+#bk-f-7 {
+  position: absolute;
+  width: 230px;
+  top: 700px;
+  left: -70px;
+  z-index: 7;
+}
+#bk-f-8 {
+  position: absolute;
+  width: 230px;
+  right: -15px;
+  top: 500px;
+  transform: rotate(-300deg);
+  z-index: 8;
+}
+#bk-f-9 {
+  position: absolute;
+  width: 230px;
+  left: -110px;
+  top: 400px;
+  transform: rotate(-250deg);
+  z-index: 9;
 }
 
 @media (min-width: 700px) {
@@ -176,7 +205,8 @@ ion-img {
 .card_componente {
   z-index: 50;
   height: 100%;
-  background-color: #002138;
+  background-color: #ffffff;
+  // background-color: #152139;
 
 }
 

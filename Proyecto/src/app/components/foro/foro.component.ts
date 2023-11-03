@@ -111,17 +111,6 @@ export class ForoComponent implements OnInit {
     this.api.cargarPublicaciones();
   }
 
-  public alertButtons = ['OK'];
-  public alertInputs = [
-    {
-      placeholder: 'Título',
-    },
-    {
-      placeholder: 'Contenido',
-      type: 'textarea'
-    },
-  ];
-
   esAutor(pub: Publicacion): boolean {
     return this.usuario.correo === pub.correo;
   }
@@ -138,6 +127,9 @@ export class ForoComponent implements OnInit {
     if (this.publicacion.id === '') {
       this.crearPublicacion();
     }
+    // else {
+    //   this.actualizarPublicacion();
+    // }
   }
 
   crearPublicacion() {
@@ -167,6 +159,11 @@ export class ForoComponent implements OnInit {
   isToastOpenEliminada = false;
   setOpenEliminada(isOpenEliminada: boolean) {
     this.isToastOpenEliminada = isOpenEliminada;
+  }
+
+  isToastOpenEditada = false;
+  setOpenEditada(isToastOpenEditada: boolean) {
+    this.isToastOpenEditada = isToastOpenEditada;
   }
 
   /**
@@ -202,5 +199,71 @@ export class ForoComponent implements OnInit {
 
     await alert.present();
   }
+
+  /**
+   * Función botón [EDITAR] |- [OK] -> Eliminar publicación, guardar publicación inmediatamente.
+   * @param pub Obtiene los datos de la publicación seleccionada
+   */
+  public async editarPublicacion(pub: any) {
+    const alert = await this.alertController.create({
+      header: 'Editar publicación #' + pub.id,
+      inputs: [
+        {
+          name: 'titulo',
+          type: 'text',
+          placeholder: 'Título',
+          value: pub.titulo
+        },
+        {
+          name: 'contenido',
+          type: 'textarea',
+          placeholder: 'Contenido',
+          attributes: {
+            multiline: true,
+            rows: 5
+          },
+          value: pub.contenido
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Publicar',
+          handler: (data) => {
+            const comentarioActualizado = {
+              id: pub.id,
+              correo: pub.correo,
+              nombre: pub.nombre,
+              apellido: pub.apellido,
+              titulo: data.titulo,
+              contenido: data.contenido
+            };
+            this.actualizarPublicacion(comentarioActualizado);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  actualizarPublicacion(pub: any) {
+    this.api.actualizarPublicacion(pub).subscribe({
+      next: (publicacion) => this.setOpenEditada(true),
+      error: (error) => showAlertError('No fue posible actualizar la publicación.', error)
+    });
+  }  
+
+
+  mensajePublicacion(accion: string, id: Publicacion) {
+    showAlertDUOC(`La publicación ${id} fue ${accion} correctamente`);
+    this.limpiarPublicacion();
+  }
+
 
 }

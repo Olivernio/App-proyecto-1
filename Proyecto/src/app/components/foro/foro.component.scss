@@ -1,5 +1,6 @@
 .fullscreen {
   border: 0;
+  background-color: #152139;
 }
 
 .div-btnPublicar {
@@ -63,7 +64,9 @@
 }
 
 .card-op {
-  width: 110%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   background-color: #f8b31c;
   border-top: 1px solid #000000;
 }

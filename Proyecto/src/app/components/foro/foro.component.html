@@ -31,9 +31,13 @@
 
     </ion-card-content>
     <div class="card-op">
-      <!-- Botón de Eliminación -->
+      <!-- Botón de [Eliminar] -->
       <ion-button (click)="eliminarPublicacion(pub)" *ngIf="esAutor(pub)" color="danger">
         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+      <!-- Botón de [Editar] -->
+      <ion-button (click)="editarPublicacion(pub)" *ngIf="esAutor(pub)" color="primary">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
       </ion-button>
     </div>
   </ion-card>
@@ -44,3 +48,6 @@
 
 <ion-toast [isOpen]="isToastOpenCreada" [duration]="5000" message="¡Publicación creada!" class="custom-toast"
   [buttons]="toastButtons" (didDismiss)="setOpenCreada(false)"></ion-toast>
+
+<ion-toast [isOpen]="isToastOpenEditada" [duration]="5000" message="¡Publicación editada!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpenEditada(false)"></ion-toast>

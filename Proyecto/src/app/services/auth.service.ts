@@ -46,10 +46,14 @@ export class AuthService {
             this.bd.actualizarSesionActiva(correo, 'S');
             this.storage.set(this.keyUsuario, usuario);
             this.usuarioAutenticado.next(usuario);
-            this.router.navigate(['inicio']);
+          } else if (correo.trim() == "" && password.trim() == "") {
+            showToast(`Escriba sus credenciales`);
+          } else if (correo.length > 1 && !correo.endsWith("@duocuc.cl")) {
+            showToast(`Escriba su correo institucional (DuocUC)`);
+          } else if (password.trim() == "") {
+            showToast(`Escriba su contraseña`);
           } else {
-            showToast(`El correo o la password son incorrectos`);
-            this.router.navigate(['ingreso']);
+            showToast(`El correo y/o la contraseña no son correctos`);
           }
         });
       }
@@ -86,12 +90,16 @@ export class AuthService {
     try {
       // Verificar si el correo es válido
       const usuario: Usuario | undefined = await this.isValidEmail(correo);
-      if (!usuario) {
-        showToast('La dirección de correo electrónico no es válida');
+      if (correo.trim() == "") {
+        showToast('Escriba su correo institucional (DuocUC)');
         return false; // Retorna false si el correo no es válido
-      } else {
+      }
+      else if (usuario) {
         this.usuarioAutenticado.next(usuario);
         return true; // Retorna true si el correo es válido
+      }
+      else {
+        return false; // Retorna false si el correo no es válido
       }
     } catch (error) {
       console.error('Error al verificar el correo:', error);

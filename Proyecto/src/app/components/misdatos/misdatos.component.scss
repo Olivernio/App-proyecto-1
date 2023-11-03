@@ -1,5 +1,15 @@
+.card {
+  margin-top: 5%;
+  background-color: #152139;
+  border: 5px solid #152139;
+  border-top-right-radius: 15%;
+  border-top-left-radius: 15%;
+  box-shadow: #152139 0px 20px 25px -5px, #152139 0px 10px 10px -5px;
+}
+
 .welcome {
   text-align: center;
+  color: white !important;
 }
 
 .item-nombre {

@@ -1,9 +1,14 @@
 .div-container {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #002138;
+  background-color: #152139;
+  color: white;
+  border-top-right-radius: 15%;
+  border-top-left-radius: 15%;
+  box-shadow: #152139 0px 20px 25px -5px, #152139 0px 10px 10px -5px;
 }
 
 .div-lbl {

@@ -1,6 +1,7 @@
 <div class="div-container">
   <ion-card-header class="welcome">
-    <ion-card-title #welcome>¡Bienvenido/a!</ion-card-title><br><ion-card-title #welcomeNombre>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
+    <ion-card-title #welcome>¡Bienvenido/a!</ion-card-title><br><ion-card-title #welcomeNombre
+      class="ion-text-center">{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
   </ion-card-header>
 
   <div class="div-lbl">
@@ -11,13 +12,12 @@
     <ion-icon slot="start" name="videocam-outline"></ion-icon>
     Comenzar Escaneo de QR
   </ion-button>
-  
+
   <ion-button *ngIf="escaneando && plataforma === 'web'" (click)="detenerEscaneoQR()" shape="round">
     <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
     Detener escaneo de QR
   </ion-button>
-  
+
   <video #video [hidden]="!escaneando" width="100%"></video>
   <canvas #canvas hidden></canvas>
-
 </div>

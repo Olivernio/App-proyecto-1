@@ -44,16 +44,17 @@
 
       </form>
 
-      <!-- Botón para recuperar contraseña -->
-      <ion-label>
-        ¿Olvidaste de tu contraseña?
-      </ion-label><br>
+      <br><br><br>
 
-      <ion-label>
-        <ion-button class="botonrecuperarcontraseña" id="btn-recuperar" (click)="ingresarcorreorecuperacion()"
-          color="warning" shape="round">Recuperar
-          contraseña</ion-button>
-      </ion-label>
+      <!-- Botón para recuperar contraseña -->
+      <div class="div-recuperar-contraseña">
+        <ion-label>
+          <p>¿Has olvidado tu contraseña?</p>
+          <ion-button class="botonrecuperarcontraseña" id="btn-recuperar" (click)="ingresarcorreorecuperacion()"
+            color="warning" shape="round">Recuperar
+            contraseña</ion-button>
+        </ion-label>
+      </div>
 
 
     </div>
@@ -64,8 +65,8 @@
   <!-- FOOTER -->
   <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
     <ion-title class="letrasfooter">
-      Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
-      &copy; 2023 DuocUC
+      Sistema de Asistencia<br>
+      &copy; 2023 <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span>
     </ion-title>
   </ion-footer>
 </div>

@@ -3,20 +3,22 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router, NavigationExtras,RouterModule } from '@angular/router';
+import { Router, NavigationExtras, RouterModule } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Storage } from '@ionic/storage-angular';
 import { Subject } from 'rxjs';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
+import { showToast } from 'src/app/tools/message-routines';
+
 
 @Component({
   selector: 'app-pregunta',
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule,RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
 export class PreguntaPage implements OnInit {
 
@@ -27,7 +29,7 @@ export class PreguntaPage implements OnInit {
   respuesta = '';
   correo = '';
 
-  constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
+  constructor(private router: Router, private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
     // Suscríbete al BehaviorSubject para obtener el usuario cuando esté disponible
@@ -37,16 +39,18 @@ export class PreguntaPage implements OnInit {
         this.nombre = usuario.nombre;
         this.preguntaSecreta = usuario.preguntaSecreta;
         this.correo = usuario.correo;
-        
+
       }
     });
   }
 
-  recuperarContrasena(){
-    if (this.respuesta==this.usuario.respuestaSecreta){
+  recuperarContrasena() {
+    if (this.respuesta.trim() == "") {
+      showToast("Responda la pregunta secreta");
+    } else if (this.respuesta == this.usuario.respuestaSecreta) {
       this.router.navigate(['/correcto']);
       this.authService.transmitirPasswordAndNombre(this.usuario.password, this.usuario.nombre);
-    }else{
+    } else {
       this.router.navigate(['/incorrecto']);
     }
   }

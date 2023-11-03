@@ -1,7 +1,7 @@
-<ion-card color="light">
+<ion-card class="card">
 
-  <ion-card-header class="welcome" #welcome>
-    <ion-card-title>Bienvenido/a<br>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
+  <ion-card-header #welcome>
+    <ion-card-title class="welcome">Bienvenido/a<br>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
   </ion-card-header>
 
   <ion-item class="item-nombre">
@@ -36,7 +36,7 @@
       labelPlacement="floating"></ion-input>
   </ion-item>
 
-  <div>
+  <div class="ion-text-center">
     <ion-button (click)="presentAlertConfirm()" shape="round">
       Actualizar mis datos
     </ion-button>
