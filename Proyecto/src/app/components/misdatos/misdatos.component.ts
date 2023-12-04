@@ -2,7 +2,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, AlertController, AnimationController } from '@ionic/angular';
+import { AlertController, AnimationController, IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { showAlertDUOC, showToast } from 'src/app/tools/message-routines';
@@ -70,7 +70,11 @@ export class MisdatosComponent implements OnInit {
   usuario = new Usuario();
   repeticionPassword = '';
 
-  constructor(private authService: AuthService, private bd: DataBaseService, private alertController: AlertController, private animationController: AnimationController) { }
+  constructor(
+      private authService: AuthService
+    , private bd: DataBaseService
+    , private alertController: AlertController
+    , private animationController: AnimationController) { }
 
   async ngOnInit() {
     this.authService.usuarioAutenticado.subscribe((usuario) => {

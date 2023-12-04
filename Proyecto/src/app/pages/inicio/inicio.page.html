@@ -47,6 +47,9 @@
           <ion-segment-button class="btnComponente" value="misdatos">
             <ion-label>Mis datos</ion-label>
           </ion-segment-button>
+          <!-- <ion-segment-button class="btnComponente" value="admin">
+            <ion-label>Admin</ion-label>
+          </ion-segment-button> -->
         </ion-segment>
       </ion-toolbar>
 
@@ -54,6 +57,7 @@
       <app-miclase [hidden]="componente_actual !== 'miclase'"></app-miclase>
       <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
       <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
+      <!-- <app-admin [hidden]="componente_actual !== 'admin'"></app-admin> -->
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -41,18 +41,21 @@
             [(ngModel)]="password"></ion-input>
         </div>
         <ion-button class="botoningresarsesion" shape="round" (click)="ingresar()" color="warning">Ingresar</ion-button>
-
       </form>
 
-      <br><br><br>
+      <!-- Botón para recuperar contraseña -->
+        <ion-label>
+          <p class="btn-recuperar" (click)="ingresarCorreoRecuperacion()">Olvidé mi contraseña</p>
+        </ion-label>
+
+      <br><br>
 
       <!-- Botón para recuperar contraseña -->
       <div class="div-recuperar-contraseña">
         <ion-label>
-          <p>¿Has olvidado tu contraseña?</p>
-          <ion-button class="botonrecuperarcontraseña" id="btn-recuperar" (click)="ingresarcorreorecuperacion()"
-            color="warning" shape="round">Recuperar
-            contraseña</ion-button>
+          <p>¿No tienes cuenta?</p>
+          <ion-button class="botonrecuperarcontraseña" id="btn-recuperar" (click)="ingresarCrearCuenta()"
+            color="warning" shape="round">Crear cuenta</ion-button>
         </ion-label>
       </div>
 

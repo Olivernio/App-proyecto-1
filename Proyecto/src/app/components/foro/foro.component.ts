@@ -9,8 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { showAlertDUOC, showAlertError } from 'src/app/tools/message-routines';
 import { AlertController } from '@ionic/angular';
 
-
-
 @Component({
   selector: 'app-foro',
   templateUrl: './foro.component.html',
@@ -19,7 +17,7 @@ import { AlertController } from '@ionic/angular';
   providers: [HttpClient, HttpClientModule],
   standalone: true,
 })
-export class ForoComponent implements OnInit {
+export class ForoComponent implements OnInit  {
 
   @ViewChild("topOfPage") topOfPage!: ElementRef;
 
@@ -258,5 +256,5 @@ export class ForoComponent implements OnInit {
     });
     this.setOpenEditada(true);
   }
-  
+
 }

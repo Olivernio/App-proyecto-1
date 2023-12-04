@@ -77,13 +77,9 @@ ion-content {
   z-index: 100;
 }
 
-.botonpaginavalidarcorreo{
-  padding-top: 3%;
-  border-radius: 10%;
-}
-
 @media (max-width: 700px) {
-  #div-logo-duocuc-700-min, #logo-duocuc-700-min {
+  #div-logo-duocuc-700-min,
+  #logo-duocuc-700-min {
     visibility: hidden;
     position: absolute;
   }
@@ -116,21 +112,24 @@ ion-img {
 .card {
   border-top-left-radius: 10%;
   border-top-right-radius: 10%;
-  border-bottom-right-radius:10%;
-  border-bottom-left-radius:10%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
   z-index: 100;
-  transition: .5s;
-}
-
-.card-form {
-  color: white;
-}
-
-#container-card{
   transition: 0.5s;
 }
 
-#div-input-respuesta {
+.container-div-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container-card {
+  transition: 0.5s;
+}
+
+.div-input {
+  width: 90%;
   border-radius: 50px;
   background-color: rgb(128, 128, 128);
   text-align: left;
@@ -140,12 +139,12 @@ ion-img {
   margin-bottom: 10px;
 }
 
-#input-respuesta {
+.input {
   width: 90%;
   color: rgb(255, 255, 255);
 }
 
-.letrasfooter{
+.letrasfooter {
   color: white;
   padding: 2%;
 }

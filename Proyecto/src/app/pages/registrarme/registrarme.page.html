@@ -1,0 +1,94 @@
+<!-- <img id="bk-f-0" src="assets/background/negro.jpg" alt="Fondo negro"> -->
+<img id="bk-f-0" src="assets/background/blanco.avif" alt="Fondo blanco" />
+
+<!-- DIV con Body simulado -->
+<div #body id="body">
+  <!-- DIV que contiene las figuras del fondo -->
+  <div class="contenedor-background">
+    <img id="bk-f-1" src="assets/background/formas/formas-background-amarillo.png" alt="Formas color amarillo" />
+    <img id="bk-f-2" src="assets/background/formas/formas-background-azul.png" alt="Formas color amarillo" />
+    <img id="bk-f-3" src="assets/background/formas/formas-background-cyan.png" alt="Formas color amarillo" />
+    <!-- <img id="bk-f-4" src="assets/background/formas/formas-background-blanco.png" alt="Formas color amarillo"> -->
+    <img id="bk-f-5" src="assets/background/formas/formas-background-naranjo.png" alt="Formas color amarillo" />
+  </div>
+
+  <div id="div-logo-duocuc-700-min">
+    <ion-img id="logo-duocuc-700-min" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+  </div>
+
+  <!-- Aquí empieza la card -->
+  <div id="container-card" style="align-content: center; align-items: center; z-index: 200">
+    <div id="div-logo-duocuc" style="bottom: -3%; left: 25%; z-index: 110">
+      <ion-img id="logo-duocuc" src="assets/image/DuocUC-light.svg" alt="Instituto Profesional DuocUC"></ion-img>
+    </div>
+    <ion-card class="card" style="background-color: #152139">
+      <ion-title class="ion-padding-top ion-text-center">
+        <h1 style="color: aliceblue; font-size: xx-large">
+          Sistema de Asistencia <br /><span style="color: #ffbd59">Duoc</span><span style="color: #004aad">UC</span>
+        </h1>
+      </ion-title>
+      <form class="container-div-inputs">
+        <ion-title>
+          <ion-label >Registrarme</ion-label>
+        </ion-title>
+        <br>
+
+        <div class="div-input">
+          <ion-input class="input" type="text" label="Nombres" name="nombre" labelPlacement="floating"
+            [(ngModel)]="usuario.nombre"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="text" label="Apellidos" name="nombre" labelPlacement="floating"
+            [(ngModel)]="usuario.apellido"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="text" label="Correo" name="correo" labelPlacement="floating"
+            [(ngModel)]="usuario.correo"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="text" label="Pregunta secreta" name="nombre" labelPlacement="floating"
+            [(ngModel)]="usuario.preguntaSecreta"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="text" label="Respuesta secreta" name="nombre" labelPlacement="floating"
+            [(ngModel)]="usuario.respuestaSecreta"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="password" label="Contraseña" name="contraseña" labelPlacement="floating"
+            [(ngModel)]="usuario.password"></ion-input>
+        </div>
+    
+        <div class="div-input">
+          <ion-input class="input" type="password" label="Repite la contraseña" name="RepetirContraseña" labelPlacement="floating"
+            [(ngModel)]="repeticionPassword"></ion-input>
+        </div>
+
+        <ion-button (click)="registro()" shape="round" color="warning"> Registrarse
+        </ion-button>
+
+      </form>
+    </ion-card>
+  </div>
+  <!-- Fin de la card -->
+
+  <!-- Botón pra volver al Login -->
+  <div class="ion-text-center">
+    <ion-button (click)="volver()" shape="round">
+      <ion-icon slot="start" name="arrow-undo-circle-outline"></ion-icon> Volver
+    </ion-button>
+  </div>
+
+  <!-- FOOTER -->
+  <ion-footer style="background-color: #152139;" class="ion-text-center ion-padding-top">
+    <ion-title class="letrasfooter">
+      Sistema de Asistencia <span style="color: #FFBD59;">Duoc</span><span style="color: #004AAD;">UC</span> <br>
+      &copy; 2023 DuocUC
+    </ion-title>
+  </ion-footer>
+</div>
+<!-- Fin del body simulado -->

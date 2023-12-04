@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { IonicModule, AnimationController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { Usuario } from 'src/app/model/usuario';
 import { Asistencia } from 'src/app/model/asistencia';
 import { AuthService } from 'src/app/services/auth.service';
@@ -27,35 +27,6 @@ export class QrComponent implements OnInit {
   @ViewChild('canvas') private canvas!: ElementRef;
   @Output() qrCapturado: EventEmitter<string> = new EventEmitter();
 
-  @ViewChild('welcome', { read: ElementRef }) itemWelcome!: ElementRef;
-  @ViewChild('welcomeNombre', { read: ElementRef }) itemWelcomeNombre!: ElementRef;
-
-  ngAfterViewInit(): void {
-
-    if (this.itemWelcome) {
-      const animation = this.animationController
-        .create()
-        .addElement(this.itemWelcome.nativeElement)
-        .iterations(1)
-        .duration(1000)
-        .fromTo('transform', 'translate(-100%)', 'translate(0)')
-        .fromTo('opacity', .6, 1);
-
-      animation.play();
-    }
-
-    if (this.itemWelcomeNombre) {
-      const animation = this.animationController
-        .create()
-        .addElement(this.itemWelcomeNombre.nativeElement)
-        .iterations(1)
-        .duration(3000)
-        .fromTo('opacity', 0, 1);
-
-      animation.play();
-    }
-  }
-
   usuario = new Usuario();
   public asistencia: Asistencia = new Asistencia();
   public escaneando = false;
@@ -67,8 +38,7 @@ export class QrComponent implements OnInit {
     private authService: AuthService,
     private bd: DataBaseService,
     private sqliteService: SQLiteService,
-    private readonly ngZone: NgZone,
-    private animationController: AnimationController) { }
+    private readonly ngZone: NgZone) { }
 
   async ngOnInit() {
     this.plataforma = this.sqliteService.platform;

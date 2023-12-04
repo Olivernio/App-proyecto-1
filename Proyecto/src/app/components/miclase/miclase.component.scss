@@ -1,14 +1,10 @@
-.ausente {
-  bottom: 0;
-}
-
 .container {
   margin-top: 5%;
   background-color: #152139;
   align-items: center;
   border: 5px solid #152139;
-  border-top-right-radius: 15%;
-  border-top-left-radius: 15%;
+  border-top-right-radius: 10%;
+  border-top-left-radius: 10%;
   box-shadow: #152139 0px 20px 25px -5px, #152139 0px 10px 10px -5px;
   z-index: 100 !important;
 
@@ -18,20 +14,28 @@
 }
 
 .titulo {
+  padding-top: 5px;
   text-align: center;
   color: white !important;
 }
 
 table {
+  margin-top: 10px;;
+  width: 290px;
   text-align: start;
   border-collapse: separate;
   border-spacing: 0 10px; /* Ajusta la cantidad de espacio vertical entre las filas */
   border: 1px solid;
   background-color: white;
+  color: black;
 }
 
 tr:nth-child(even) {
   background-color: rgb(206, 206, 206);
+}
+
+td {
+  padding-left: 5px;
 }
 
 .celda-titulo {
@@ -42,4 +46,3 @@ tr:nth-child(even) {
   text-align: start;
   width: 60%;
 }
-
