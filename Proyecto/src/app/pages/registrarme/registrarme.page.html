@@ -29,46 +29,46 @@
       </ion-title>
       <form class="container-div-inputs">
         <ion-title>
-          <ion-label >Registrarme</ion-label>
+          <ion-label>Registrarme</ion-label>
         </ion-title>
         <br>
 
         <div class="div-input">
-          <ion-input class="input" type="text" label="Nombres" name="nombre" labelPlacement="floating"
+          <ion-input class="input" type="text" label="Nombres" name="nombres" labelPlacement="floating"
             [(ngModel)]="usuario.nombre"></ion-input>
         </div>
-    
+
         <div class="div-input">
           <ion-input class="input" type="text" label="Apellidos" name="nombre" labelPlacement="floating"
             [(ngModel)]="usuario.apellido"></ion-input>
         </div>
-    
+
         <div class="div-input">
-          <ion-input class="input" type="text" label="Correo" name="correo" labelPlacement="floating"
-            [(ngModel)]="usuario.correo"></ion-input>
+          <ion-input class="input" type="email" label="Correo" name="correo" labelPlacement="floating"
+            errorText="Correo inválido" [(ngModel)]="usuario.correo" ngModel email></ion-input>
         </div>
-    
+
         <div class="div-input">
           <ion-input class="input" type="text" label="Pregunta secreta" name="nombre" labelPlacement="floating"
             [(ngModel)]="usuario.preguntaSecreta"></ion-input>
         </div>
-    
+
         <div class="div-input">
           <ion-input class="input" type="text" label="Respuesta secreta" name="nombre" labelPlacement="floating"
             [(ngModel)]="usuario.respuestaSecreta"></ion-input>
         </div>
-    
+
         <div class="div-input">
           <ion-input class="input" type="password" label="Contraseña" name="contraseña" labelPlacement="floating"
             [(ngModel)]="usuario.password"></ion-input>
         </div>
-    
+
         <div class="div-input">
-          <ion-input class="input" type="password" label="Repite la contraseña" name="RepetirContraseña" labelPlacement="floating"
-            [(ngModel)]="repeticionPassword"></ion-input>
+          <ion-input class="input" type="password" label="Repite la contraseña" name="RepetirContraseña"
+            labelPlacement="floating" [(ngModel)]="repeticionPassword"></ion-input>
         </div>
 
-        <ion-button (click)="registro()" shape="round" color="warning"> Registrarse
+        <ion-button (click)="msjErrorRegistrar()" shape="round" color="warning"> Registrarse
         </ion-button>
 
       </form>

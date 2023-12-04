@@ -1,5 +1,5 @@
 .card {
-  margin-top: 5%;
+  margin-top: 2%;
   background-color: #152139;
   border: 5px solid #152139;
   border-top-right-radius: 15%;
@@ -16,7 +16,28 @@
   margin: 0;
 }
 
-#input-nombre {
+.container-div-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container-card {
+  transition: 0.5s;
+}
+
+.div-input {
+  width: 90%;
+  border-radius: 50px;
+  background-color: rgb(128, 128, 128);
+  text-align: left;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input {
   width: 90%;
   color: rgb(255, 255, 255);
 }

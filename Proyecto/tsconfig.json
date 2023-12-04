@@ -10,8 +10,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "sourceMap": false, //cambiado a false
-    "inlineSourceMap": true, // cambiado a true
+    "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
@@ -20,7 +19,6 @@
     "target": "es2022",
     "module": "es2020",
     "lib": ["es2018", "dom"],
-    "types": ["cypress"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

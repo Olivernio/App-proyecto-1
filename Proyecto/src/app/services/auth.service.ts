@@ -40,24 +40,42 @@ export class AuthService {
         this.usuarioAutenticado.next(usuarioAutenticado);
         this.router.navigate(['inicio']);
       } else {
-        await this.bd.validarUsuario(correo, password).then(async (usuario: Usuario | undefined) => {
-          if (usuario) {
-            showToast(`¡Bienvenido(a) ${usuario.nombre} ${usuario.apellido}!`);
-            this.bd.actualizarSesionActiva(correo, 'S');
-            this.storage.set(this.keyUsuario, usuario);
-            this.usuarioAutenticado.next(usuario);
-            this.router.navigate(['inicio']);
-          } else if (correo.trim() == "" && password.trim() == "") {
-            showToast(`Escriba sus credenciales`);
-          } else if (correo.length > 1 && !correo.endsWith("@duocuc.cl")) {
-            showToast(`Escriba su correo institucional (DuocUC)`);
-          } else if (password.trim() == "") {
-            showToast(`Escriba su contraseña`);
-          } else {
-            showToast(`El correo y/o la contraseña no son correctos`);
-          }
-        });
+        if (correo == 'admin') {
+          await this.bd.validarAdminYPassword(correo, password).then(async (usuario: Usuario | undefined) => {
+            console.log(password + "a ver")
+            if (correo == 'admin' && password == usuario?.password) {
+              console.log(password + 'xd')
+              showToast(`¡Bienvenido(a) ${usuario.nombre} ${usuario.apellido}!`);
+              this.bd.actualizarSesionActiva(correo, 'S');
+              this.storage.set(this.keyUsuario, usuario);
+              this.usuarioAutenticado.next(usuario);
+              this.router.navigate(['inicio']);
+            } else {
+              showToast(`El correo y/o la asdasd` + password);
+            }
+            return;
+          })
+        } else {
+          await this.bd.validarUsuario(correo, password).then(async (usuario: Usuario | undefined) => {
+            if (usuario) {
+              showToast(`¡Bienvenido(a) ${usuario.nombre} ${usuario.apellido}!`);
+              this.bd.actualizarSesionActiva(correo, 'S');
+              this.storage.set(this.keyUsuario, usuario);
+              this.usuarioAutenticado.next(usuario);
+              this.router.navigate(['inicio']);
+            } else if (correo.trim() == "" && password.trim() == "") {
+              showToast(`Escriba sus credenciales`);
+            } else if (correo.length > 1 && !correo.endsWith("@duocuc.cl")) {
+              showToast(`Escriba su correo institucional (DuocUC)`);
+            } else if (password.trim() == "") {
+              showToast(`Escriba su contraseña`);
+            } else {
+              showToast(`El correo y/o la contraseña no son correctos`);
+            }
+          });
+        }
       }
+
     });
   }
 

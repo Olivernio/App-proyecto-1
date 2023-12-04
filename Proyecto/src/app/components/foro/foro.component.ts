@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { showAlertDUOC, showAlertError } from 'src/app/tools/message-routines';
 import { AlertController } from '@ionic/angular';
 
+
+
 @Component({
   selector: 'app-foro',
   templateUrl: './foro.component.html',
@@ -17,7 +19,7 @@ import { AlertController } from '@ionic/angular';
   providers: [HttpClient, HttpClientModule],
   standalone: true,
 })
-export class ForoComponent implements OnInit  {
+export class ForoComponent implements OnInit {
 
   @ViewChild("topOfPage") topOfPage!: ElementRef;
 
@@ -131,9 +133,16 @@ export class ForoComponent implements OnInit  {
 
   crearPublicacion() {
     this.publicacion.id = '';
-    this.publicacion.correo = this.usuario.correo;
-    this.publicacion.nombre = this.usuario.nombre;
-    this.publicacion.apellido = this.usuario.apellido;
+    if (this.publicacion.correo == 'admin@duocuc.cl') {
+      this.publicacion.correo = this.usuario.correo;
+      this.publicacion.nombre = 'Administrador ';
+      this.publicacion.apellido = 'del Sistema';
+    } else {
+      this.publicacion.correo = this.usuario.correo;
+      this.publicacion.nombre = this.usuario.nombre;
+      this.publicacion.apellido = this.usuario.apellido;
+    }
+    
     this.api.crearPublicacion(this.publicacion).subscribe({
       next: (publicacion) => this.limpiarPublicacion(),
       error: (error) => showAlertError('No fue posible crear la publicación.', error)
@@ -256,5 +265,5 @@ export class ForoComponent implements OnInit  {
     });
     this.setOpenEditada(true);
   }
-
+  
 }

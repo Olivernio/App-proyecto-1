@@ -2,11 +2,11 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'cl.duoc.asistenciaduoc',
-  appName: 'Asistencia DUOC',
+  appName: 'Asistencia DuocUC',
   webDir: 'www',
-  bundledWebRuntime: false,
-
-
+  server: {
+    androidScheme: 'https'
+  },
   // CGV-INI: Se debe agregar el soporte de SQLite para poder usar el plugin en Android
   plugins: {
     CapacitorSQLite: {

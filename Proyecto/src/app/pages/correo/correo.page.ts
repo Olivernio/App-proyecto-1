@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertController, IonicModule } from '@ionic/angular';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { showToast } from 'src/app/tools/message-routines';
 
 @Component({
   selector: 'app-correo',
@@ -27,11 +28,11 @@ export class CorreoPage implements OnInit {
    */
   async recuperarContrasena() {
     const correoValido = await this.authService.verificacionCorreo(this.correo);
-    if (correoValido) {
+    if (correoValido && this.correo.trim() !== 'admin') {
       this.router.navigate(['/pregunta']);
     }
-    else if (this.correo == '' || this.correo == ' ') {
-      //
+    else if (this.correo == '' || this.correo == ' ' || this.correo.trim() === 'admin') {
+      showToast('Escriba su correo institucional (DuocUC)');
     }
     else {
       this.correo = '';

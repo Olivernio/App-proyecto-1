@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <br>
+  <h1 style="text-align:center;">Administrar Usuarios</h1>
+
+  <ion-card class="custom-card" *ngFor="let usuario of usuarios; let i = index" [ngClass]="{ 'eliminado': usuariosEliminados.has(i) }">
+    <div class="head-card">
+      <div class="card-id">#{{ i + 1 }}</div>
+      <div class="card-title">
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        {{ usuario.nombre }} {{ usuario.apellido }}
+      </div>
+    </div>
+    <ion-card-content>
+
+      <div class="card-content">
+        {{ usuario.correo }}
+      </div>
+
+    </ion-card-content>
+    <div class="card-op" *ngIf="usuario.correo!=='admin@duocuc.cl'">
+      <!-- Botón de [Eliminar] -->
+      <ion-button (click)="eliminarUsuario(usuario, i)" color="danger">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <ion-toast [isOpen]="isToastOpenEliminada" [duration]="5000" message="¡Usuario eliminado!" class="custom-toast"
+  [buttons]="toastButtons" (didDismiss)="setOpenEliminada(false)"></ion-toast>
+
+</ion-content>

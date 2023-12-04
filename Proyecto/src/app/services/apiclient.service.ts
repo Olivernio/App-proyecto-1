@@ -61,11 +61,11 @@ export class APIClientService {
     );
   }
 
-  actualizarPublicacion(publicacion: any): Observable<any> {
-    return this.http.put(this.apiUrl + '/publicaciones/' + publicacion.id, publicacion, this.httpOptions)
-      .pipe(retry(3)
+  actualizarPublicacion(pub: any): Observable<any> {
+    return this.http.put(this.apiUrl + '/publicaciones/' + pub.id, pub, this.httpOptions).pipe(
+      retry(3)
     );
-  }
+  }  
 
   eliminarPublicacion(publicacionId: number): Observable<any> {
     return this.http.delete(this.apiUrl + '/publicaciones/' + publicacionId, this.httpOptions).pipe(

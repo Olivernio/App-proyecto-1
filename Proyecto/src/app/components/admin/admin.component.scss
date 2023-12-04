@@ -1,0 +1,129 @@
+h4 {
+  color: #fff;
+}
+
+h2 {
+  color: #070000;
+}
+
+.item-inner {
+  color: rgb(255, 255, 255);
+}
+
+.fullscreen {
+  border: 0;
+  background-color: #152139;
+}
+
+.custom-card {
+  margin: 10px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.head-card {
+  width: 100%;
+  background-color: #f8b31c;
+  border-bottom: 1px solid #000000;
+
+  ion-avatar {
+    height: 1.2em;
+    width: 1.2em;
+    margin-right: 3px;
+  }
+
+  .card-id {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color: #152139;
+    color: #ffffff;
+    font-size: .6em;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .card-title {
+    margin-left: 5px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+.card-content {
+  margin-top: 0;
+}
+
+.card-op {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f8b31c;
+  border-top: 1px solid #000000;
+}
+
+.action-buttons ion-button {
+  margin-right: 8px;
+}
+
+.action-buttons ion-icon {
+  font-size: 1.2em;
+}
+
+.eliminado {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-1 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-2 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-3 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-4 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-5 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-6 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-7 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-8 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-9 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-10 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-11 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+.eliminado-12 {
+  animation: fadeOutAnimation 0.5s ease forwards;
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SQLiteService } from './sqlite.service';
 import { Usuario } from '../model/usuario';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -36,7 +36,7 @@ export class DataBaseService {
   async inicializarBaseDeDatos() {
 
     // Crear base de datos SQLite
-    await this.sqliteService.crearBaseDeDatos({database: this.nombreBD, upgrade: this.userUpgrades});
+    await this.sqliteService.crearBaseDeDatos({ database: this.nombreBD, upgrade: this.userUpgrades });
 
     // Abrir base de datos
     this.db = await this.sqliteService.abrirBaseDeDatos(this.nombreBD, false, 'no-encryption', 1, false);
@@ -46,13 +46,13 @@ export class DataBaseService {
 
     // Cargar la lista de usuarios
     await this.leerUsuarios();
+
   }
 
   async crearUsuariosDePrueba() {
- 
- 
-    await this.guardarUsuario(Usuario.getUsuario('admin', '1234', 'admin', '', 'hola', 'chao', 'N'));
- 
+
+    await this.guardarUsuario(Usuario.getUsuario('admin@duocuc.cl', 'admin', 'Administrador', 'del Sistema', '', '', 'N'));
+
     await this.guardarUsuario(Usuario.getUsuario('atorres@duocuc.cl', '1234', 'Ana', 'Torres', 'Nombre de mi mascota', 'gato', 'N'));
     await this.guardarUsuario(Usuario.getUsuario('avalenzuela@duocuc.cl', 'qwer', 'Alberto', 'Valenzuela', 'Mi mejor amigo', 'juanito', 'N'));
     await this.guardarUsuario(Usuario.getUsuario('cfuentes@duocuc.cl', 'asdf', 'Carla', 'Fuentes', 'Dónde nació mamá', 'valparaiso', 'N'));
@@ -62,12 +62,12 @@ export class DataBaseService {
   // se realizarán con el mismo método, ya que la instrucción "INSERT OR REPLACE"
   // revisa la clave primaria y si el registro es nuevo entonces lo inserta,
   // pero si el registro ya existe, entonces los actualiza.
-  
+
   async guardarUsuario(usuario: Usuario) {
     const sql = 'INSERT OR REPLACE INTO USUARIO (correo, password, nombre, apellido, ' +
       'preguntaSecreta, respuestaSecreta, sesionActiva) VALUES (?,?,?,?,?,?,?);';
-    await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido, 
-      usuario.preguntaSecreta, usuario.respuestaSecreta, usuario.sesionActiva]);
+    await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido,
+    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario.sesionActiva]);
     await this.leerUsuarios();
   }
 
@@ -79,14 +79,14 @@ export class DataBaseService {
   // ReadAll del CRUD. Si existen registros entonces convierte los registros en una lista de usuarios
   // con la instrucción ".values as Usuario[];". Si la tabla no tiene registros.
   async leerUsuarios() {
-    const usuarios: Usuario[]= (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
     this.listaUsuarios.next(usuarios);
     this.listaUsuariosFueActualizada.next(true);
   }
 
   // Read del CRUD
   async leerUsuario(correo: string): Promise<Usuario | undefined> {
-    const usuarios: Usuario[]= (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
     return usuarios[0];
   }
 
@@ -99,26 +99,42 @@ export class DataBaseService {
 
   // Validar usuario
   async validarUsuario(correo: string, password: string): Promise<Usuario | undefined> {
-    const usuarios: Usuario[]= (await this.db.query('SELECT * FROM USUARIO WHERE correo=? AND password=?;',
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=? AND password=?;',
       [correo, password])).values as Usuario[];
     return usuarios[0];
   }
 
- 
- 
-// Validar correo
-async validarCorreo(correo: string): Promise<Usuario | undefined> {
-  const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
-  return usuarios[0];
-}
+  // Validar correo
+  async validarCorreo(correo: string): Promise<Usuario | undefined> {
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+    return usuarios[0];
+  }
 
-  
-
- 
   // Actualizar sesión activa
   async actualizarSesionActiva(correo: string, sesionActiva: string) {
     const sql = 'UPDATE USUARIO SET sesionActiva=? WHERE correo=?';
     await this.db.run(sql, [sesionActiva, correo]);
     await this.leerUsuarios();
+  }
+
+  async traerListaUsuarios(): Promise<Usuario[]> {
+    try {
+      const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO;')).values as Usuario[];
+      console.log(usuarios, 'LeerUsuarios');
+      return usuarios;
+    } catch (error) {
+      console.error('Error al obtener usuarios', error);
+      throw error;
+    }
+  }
+
+  async validarAdmin(correo: string): Promise<Usuario | undefined> {
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+    return usuarios[0];
+  }
+
+  async validarAdminYPassword(correo: string, password: string): Promise<Usuario | undefined> {
+    const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo="admin@duocuc.cl" and password=?;', [password])).values as Usuario[];
+    return usuarios[0];
   }
 }

@@ -9,8 +9,5 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class AppComponent {
-  
-  title = 'Asistencia Duoc'
-  
   constructor() {}
 }

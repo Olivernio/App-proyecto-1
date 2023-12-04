@@ -9,7 +9,7 @@ import { ForoComponent } from 'src/app/components/foro/foro.component';
 import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.component';
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { APIClientService } from 'src/app/services/apiclient.service';
-// import { AdminComponent } from 'src/app/components/admin/admin.component';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Usuario } from 'src/app/model/usuario';
 import { Router } from '@angular/router';
@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
     MiclaseComponent,
     ForoComponent,
     MisdatosComponent,
-    // AdminComponent
+    AdminComponent,
   ],
   animations: [
     trigger('slideInOut', [
@@ -64,14 +64,13 @@ export class InicioPage implements OnInit {
       }
     })
     this.authService.leerUsuarioAutenticado().then((userData) => {
-      this.admin_ = userData?.nombre === 'admin';
+      this.admin_ = userData?.correo === 'admin@duocuc.cl';
     });
     this.componente_actual = 'qr';
     this.bd.datosQR.next('');
   }
 
   ngAfterViewInit(): void {
-
     if (this.itemTitulo) {
       const animation = this.animationController
         .create()

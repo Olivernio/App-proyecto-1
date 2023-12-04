@@ -21,7 +21,7 @@ export class RegistrarmePage implements OnInit {
   repeticionPassword = '';
 
   constructor(
-      private authService: AuthService
+    private authService: AuthService
     , private bd: DataBaseService
     , private router: Router) { }
 
@@ -34,28 +34,86 @@ export class RegistrarmePage implements OnInit {
     })
   }
 
-  mostrarMensaje(nombreCampo:string, valor: string) {
-    if (valor.trim() === '' || valor.trim() === ' ') {
-      showAlertDUOC(`Debe ingresar un valor para el campo "${nombreCampo}".`);
-      return false;
+  async msjErrorRegistrar(): Promise<void> {
+
+    if (this.usuario.nombre.trim() === '' || this.usuario.nombre.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Nombre]!");
+      return;
+    } else if (this.usuario.nombre.length < 4) {
+      showAlertDUOC("¡El nombre es muy corto!")
+      return;
+    } else if (this.usuario.nombre.length > 30) {
+      showAlertDUOC("¡El nombre es muy largo!")
+      return;
     }
-    return true;
-  }
 
+    if (this.usuario.apellido.trim() === '' || this.usuario.apellido.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Apellido]!");
+      return;
+    } else if (this.usuario.apellido.length < 4) {
+      showAlertDUOC("¡El apellido es muy corto!")
+      return;
+    } else if (this.usuario.apellido.length > 30) {
+      showAlertDUOC("¡El apellido es muy largo!")
+      return;
+    }
 
-  registro(){
-    if (!this.mostrarMensaje('nombre', this.usuario.nombre)) return;
-    if (!this.mostrarMensaje('apellidos', this.usuario.apellido)) return;
-    if (!this.mostrarMensaje('correo', this.usuario.correo)) return;
-    if (!this.mostrarMensaje('pregunta secreta', this.usuario.preguntaSecreta)) return;
-    if (!this.mostrarMensaje('respuesta secreta', this.usuario.respuestaSecreta)) return;
-    if (!this.mostrarMensaje('contraseña', this.usuario.password)) return;
-    if (this.usuario.password !== this.repeticionPassword) {
+    const usu = await this.bd.leerUsuario(this.usuario.correo);
+
+    if (this.usuario.correo.trim() === '' || this.usuario.correo.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Correo]!");
+      return;
+    } else if (!this.usuario.correo.includes("@") && !this.usuario.correo.includes(".")) {
+      showAlertDUOC("¡El correo es inválido!")
+      return;
+    } else if (!this.usuario.correo.endsWith("@duocuc.cl")) {
+      showAlertDUOC("El correo tiene que institucional (ejemplo@duocuc.cl)")
+      return;
+    } else if (usu?.correo == 'admin@duocuc.cl') {
+      showAlertDUOC("Correo administrativo reservado.");
+      return;
+    } else if (usu?.correo) {
+      showAlertDUOC("Este correo está en uso.");
+      return;
+    }
+
+    if (this.usuario.preguntaSecreta.trim() === '' || this.usuario.preguntaSecreta.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Pregunta secreta]!")
+      return;
+    } else if (this.usuario.preguntaSecreta.length < 4) {
+      showAlertDUOC("¡La pregunta secreta es muy corto!")
+      return;
+    } else if (this.usuario.preguntaSecreta.length > 30) {
+      showAlertDUOC("¡La pregunta secreta es muy largo!")
+      return;
+    }
+
+    if (this.usuario.respuestaSecreta.trim() === '' || this.usuario.respuestaSecreta.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Respuesta secreta]!")
+      return;
+    }
+
+    if (this.usuario.password.trim() === '' || this.usuario.password.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Contraseña]!");
+      return;
+    } else if (this.usuario.password.length < 4) {
+      showAlertDUOC("¡La contraseña es muy corta!");
+      return;
+    } else if (this.usuario.password.length > 40) {
+      showAlertDUOC("¡La contraseña es muy larga!");
+      return;
+    }
+
+    if (this.repeticionPassword.trim() === '' || this.repeticionPassword.trim() === ' ') {
+      showAlertDUOC("¡Rellene la casilla [Repite la contraseña]!");
+      return;
+    } else if (this.usuario.password !== this.repeticionPassword) {
       showAlertDUOC(`¡Las contraseñas no son iguales!`);
       return;
     }
+
     this.bd.guardarUsuario(this.usuario);
-    this.authService.setUsuarioAutenticado(this.usuario);
+    // this.authService.setUsuarioAutenticado(this.usuario);
     showToast('Ha sido registrado correctamente');
     this.router.navigate(['/ingreso']);
   }
