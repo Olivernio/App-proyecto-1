@@ -37,23 +37,23 @@ export class RegistrarmePage implements OnInit {
   async msjErrorRegistrar(): Promise<void> {
 
     if (this.usuario.nombre.trim() === '' || this.usuario.nombre.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Nombre]!");
+      showAlertDUOC("¡Escriba su nombre!");
       return;
     } else if (this.usuario.nombre.length < 4) {
       showAlertDUOC("¡El nombre es muy corto!")
       return;
-    } else if (this.usuario.nombre.length > 30) {
+    } else if (this.usuario.nombre.length > 60) {
       showAlertDUOC("¡El nombre es muy largo!")
       return;
     }
 
     if (this.usuario.apellido.trim() === '' || this.usuario.apellido.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Apellido]!");
+      showAlertDUOC("¡Escriba su apellido]!");
       return;
     } else if (this.usuario.apellido.length < 4) {
       showAlertDUOC("¡El apellido es muy corto!")
       return;
-    } else if (this.usuario.apellido.length > 30) {
+    } else if (this.usuario.apellido.length > 60) {
       showAlertDUOC("¡El apellido es muy largo!")
       return;
     }
@@ -61,7 +61,7 @@ export class RegistrarmePage implements OnInit {
     const usu = await this.bd.leerUsuario(this.usuario.correo);
 
     if (this.usuario.correo.trim() === '' || this.usuario.correo.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Correo]!");
+      showAlertDUOC("¡Escriba su correo!");
       return;
     } else if (!this.usuario.correo.includes("@") && !this.usuario.correo.includes(".")) {
       showAlertDUOC("¡El correo es inválido!")
@@ -69,7 +69,7 @@ export class RegistrarmePage implements OnInit {
     } else if (!this.usuario.correo.endsWith("@duocuc.cl")) {
       showAlertDUOC("El correo tiene que institucional (ejemplo@duocuc.cl)")
       return;
-    } else if (usu?.correo == 'admin@duocuc.cl') {
+    } else if (usu?.correo.trim() == 'admin@duocuc.cl') {
       showAlertDUOC("Correo administrativo reservado.");
       return;
     } else if (usu?.correo) {
@@ -78,7 +78,7 @@ export class RegistrarmePage implements OnInit {
     }
 
     if (this.usuario.preguntaSecreta.trim() === '' || this.usuario.preguntaSecreta.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Pregunta secreta]!")
+      showAlertDUOC("¡Escriba su pregunta secreta!")
       return;
     } else if (this.usuario.preguntaSecreta.length < 4) {
       showAlertDUOC("¡La pregunta secreta es muy corto!")
@@ -89,12 +89,12 @@ export class RegistrarmePage implements OnInit {
     }
 
     if (this.usuario.respuestaSecreta.trim() === '' || this.usuario.respuestaSecreta.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Respuesta secreta]!")
+      showAlertDUOC("¡Escriba su respuesta secreta!")
       return;
     }
 
     if (this.usuario.password.trim() === '' || this.usuario.password.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Contraseña]!");
+      showAlertDUOC("¡Escriba su contraseña!");
       return;
     } else if (this.usuario.password.length < 4) {
       showAlertDUOC("¡La contraseña es muy corta!");
@@ -105,7 +105,7 @@ export class RegistrarmePage implements OnInit {
     }
 
     if (this.repeticionPassword.trim() === '' || this.repeticionPassword.trim() === ' ') {
-      showAlertDUOC("¡Rellene la casilla [Repite la contraseña]!");
+      showAlertDUOC("¡Repita la contraseña!");
       return;
     } else if (this.usuario.password !== this.repeticionPassword) {
       showAlertDUOC(`¡Las contraseñas no son iguales!`);

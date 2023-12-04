@@ -1,49 +1,51 @@
-<ion-card class="card">
+<ion-content [fullscreen]="true">
+  <ion-card class="card">
 
-  <ion-card-header #welcome>
-    <ion-card-title class="welcome">Bienvenido/a<br>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
-  </ion-card-header>
+    <ion-card-header #welcome>
+      <ion-card-title class="welcome">Bienvenido/a<br><span id="saludo">{{ usuario.nombre }} {{ usuario.apellido }}</span></ion-card-title>
+    </ion-card-header>
 
-  <form class="container-div-inputs">
-    <div class="div-input">
-      <ion-input class="input" type="text" label="Nombres" name="nombres" labelPlacement="floating"
-        [(ngModel)]="usuario.nombre"></ion-input>
+    <form class="container-div-inputs">
+      <div class="div-input">
+        <ion-input id="input-nombre" class="input" type="text" label="Nombres" name="nombres" labelPlacement="floating"
+          [(ngModel)]="usuario.nombre"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input id="input-apellido" class="input" type="text" label="Apellidos" name="nombre"
+          labelPlacement="floating" [(ngModel)]="usuario.apellido"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input class="input" type="email" label="Correo" name="correo" labelPlacement="floating"
+          [(ngModel)]="usuario.correo" [disabled]="true"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input id="input-preguntaSecreta" class="input" type="text" label="Pregunta secreta" name="nombre"
+          labelPlacement="floating" [(ngModel)]="usuario.preguntaSecreta"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input id="input-respuestaSecreta" class="input" type="text" label="Respuesta secreta" name="nombre"
+          labelPlacement="floating" [(ngModel)]="usuario.respuestaSecreta"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input id="input-password" class="input" type="password" label="Contraseña" name="contraseña"
+          labelPlacement="floating" [(ngModel)]="usuario.password"></ion-input>
+      </div>
+
+      <div class="div-input">
+        <ion-input id="input-repetirPassword" class="input" type="password" label="Repite la contraseña"
+          name="RepetirContraseña" labelPlacement="floating" [(ngModel)]="repeticionPassword"></ion-input>
+      </div>
+    </form>
+
+    <div class="ion-text-center">
+      <ion-button id="btnActualizarDatos" (click)="msjErrorActualizarPerfil()" shape="round">
+        Actualizar mis datos
+      </ion-button>
     </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="text" label="Apellidos" name="nombre" labelPlacement="floating"
-        [(ngModel)]="usuario.apellido"></ion-input>
-    </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="email" label="Correo" name="correo" labelPlacement="floating"
-        [(ngModel)]="usuario.correo" [disabled]="true"></ion-input>
-    </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="text" label="Pregunta secreta" name="nombre" labelPlacement="floating"
-        [(ngModel)]="usuario.preguntaSecreta"></ion-input>
-    </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="text" label="Respuesta secreta" name="nombre" labelPlacement="floating"
-        [(ngModel)]="usuario.respuestaSecreta"></ion-input>
-    </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="password" label="Contraseña" name="contraseña" labelPlacement="floating"
-        [(ngModel)]="usuario.password"></ion-input>
-    </div>
-
-    <div class="div-input">
-      <ion-input class="input" type="password" label="Repite la contraseña" name="RepetirContraseña"
-        labelPlacement="floating" [(ngModel)]="repeticionPassword"></ion-input>
-    </div>
-  </form>
-
-  <div class="ion-text-center">
-    <ion-button (click)="presentAlertConfirm()" shape="round">
-      Actualizar mis datos
-    </ion-button>
-  </div>
-</ion-card>
+  </ion-card>
+</ion-content>

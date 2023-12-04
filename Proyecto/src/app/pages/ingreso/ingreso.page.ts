@@ -37,6 +37,7 @@ export class IngresoPage implements OnInit {
   }
 
   ingresar() {
+    showToast('CLIC BOTÓN INGRESAR')
     this.authService.login(this.correo, this.password);
   }
 

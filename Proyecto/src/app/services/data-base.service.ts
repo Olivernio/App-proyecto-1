@@ -66,8 +66,8 @@ export class DataBaseService {
   async guardarUsuario(usuario: Usuario) {
     const sql = 'INSERT OR REPLACE INTO USUARIO (correo, password, nombre, apellido, ' +
       'preguntaSecreta, respuestaSecreta, sesionActiva) VALUES (?,?,?,?,?,?,?);';
-    await this.db.run(sql, [usuario.correo, usuario.password, usuario.nombre, usuario.apellido,
-    usuario.preguntaSecreta, usuario.respuestaSecreta, usuario.sesionActiva]);
+    await this.db.run(sql, [usuario.correo.trim().toLowerCase(), usuario.password, usuario.nombre.trim(), usuario.apellido.trim(),
+    usuario.preguntaSecreta.trim(), usuario.respuestaSecreta.trim(), usuario.sesionActiva]);
     await this.leerUsuarios();
   }
 
