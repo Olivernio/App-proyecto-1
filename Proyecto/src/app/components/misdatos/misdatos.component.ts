@@ -68,6 +68,11 @@ export class MisdatosComponent implements OnInit {
   }
 
   usuario = new Usuario();
+  // nombre: string = '';
+  // apellido: string = '';
+  // preguntaSecreta: string = '';
+  // respuestaSecreta: string = '';
+  // password: string = '';
   repeticionPassword = '';
 
   constructor(private authService: AuthService, private bd: DataBaseService, private alertController: AlertController, private animationController: AnimationController) { }
@@ -75,13 +80,15 @@ export class MisdatosComponent implements OnInit {
   async ngOnInit() {
     this.authService.usuarioAutenticado.subscribe((usuario) => {
       if (usuario !== null) {
-        this.usuario = usuario!;
-        this.repeticionPassword = usuario!.password;
+        console.log(usuario);
+        this.usuario = usuario;
+        this.repeticionPassword = usuario.password;
       }
     })
   }
 
   actualizarPerfil() {
+
     this.bd.guardarUsuario(this.usuario);
     this.authService.setUsuarioAutenticado(this.usuario);
     showToast('Sus datos fueron actualizados');
@@ -93,7 +100,7 @@ export class MisdatosComponent implements OnInit {
     if (this.usuario.nombre.trim() === '' || this.usuario.nombre.trim() === ' ') {
       showAlertDUOC("¡Escriba su nombre!");
       return;
-    } else if (this.usuario.nombre.length < 4) {
+    } else if (this.usuario.nombre.length < 3) {
       showAlertDUOC("¡El nombre es muy corto!")
       return;
     } else if (this.usuario.nombre.length > 30) {
@@ -104,7 +111,7 @@ export class MisdatosComponent implements OnInit {
     if (this.usuario.apellido.trim() === '' || this.usuario.apellido.trim() === ' ') {
       showAlertDUOC("¡Escriba su apellido!");
       return;
-    } else if (this.usuario.apellido.length < 4) {
+    } else if (this.usuario.apellido.length < 3) {
       showAlertDUOC("¡El apellido es muy corto!")
       return;
     } else if (this.usuario.apellido.length > 30) {
@@ -148,32 +155,12 @@ export class MisdatosComponent implements OnInit {
     }
 
 
-    if (
-      this.usuario.nombre !== '' &&
-      this.usuario.nombre !== null &&
-      this.usuario.nombre !== undefined &&
-      this.usuario.apellido !== '' &&
-      this.usuario.apellido !== null &&
-      this.usuario.apellido !== undefined &&
-      this.usuario.preguntaSecreta !== '' &&
-      this.usuario.preguntaSecreta !== null &&
-      this.usuario.preguntaSecreta !== undefined &&
-      this.usuario.respuestaSecreta !== '' &&
-      this.usuario.respuestaSecreta !== null &&
-      this.usuario.respuestaSecreta !== undefined &&
-      this.usuario.password !== '' &&
-      this.usuario.password !== null &&
-      this.usuario.password !== undefined &&
-      this.repeticionPassword !== '' &&
-      this.repeticionPassword !== null &&
-      this.repeticionPassword !== undefined
-    ) {
-
-      console.log(this.usuario);
-
-      this.presentAlertConfirm();
-
-    }
+    if (this.usuario.nombre && this.usuario.apellido && this.usuario.preguntaSecreta && 
+      this.usuario.respuestaSecreta && this.usuario.password == this.repeticionPassword) {
+    this.presentAlertConfirm();
+  } else {
+    showAlertDUOC('Por favor complete todos los campos.');
+  }
   }
 
 }

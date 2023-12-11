@@ -39,7 +39,7 @@ export class RegistrarmePage implements OnInit {
     if (this.usuario.nombre.trim() === '' || this.usuario.nombre.trim() === ' ') {
       showAlertDUOC("¡Escriba su nombre!");
       return;
-    } else if (this.usuario.nombre.length < 4) {
+    } else if (this.usuario.nombre.length < 3) {
       showAlertDUOC("¡El nombre es muy corto!")
       return;
     } else if (this.usuario.nombre.length > 60) {
@@ -50,7 +50,7 @@ export class RegistrarmePage implements OnInit {
     if (this.usuario.apellido.trim() === '' || this.usuario.apellido.trim() === ' ') {
       showAlertDUOC("¡Escriba su apellido]!");
       return;
-    } else if (this.usuario.apellido.length < 4) {
+    } else if (this.usuario.apellido.length < 3) {
       showAlertDUOC("¡El apellido es muy corto!")
       return;
     } else if (this.usuario.apellido.length > 60) {
